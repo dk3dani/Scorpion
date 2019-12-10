@@ -9,9 +9,9 @@
 </head>
 
   <body class="sidebar-mini sidebar-collapse" style="height: auto;">
-  <div class="wrapper">
+  <div id="app" class="wrapper">
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav  class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -74,7 +74,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
             <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link">
+              <a href="{{route('customers.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   Clientes
@@ -117,24 +117,8 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper" style="min-height: 1203.6px;">
-      <!-- Content Header (Page header) -->
-      <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0 text-dark"></h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
-              </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
-      <!-- /.content-header -->
+    <div class="content-wrapper" style=" margin-top:30px; min-height: 1203.6px;">
+
 
       <!-- Main content -->
       <div class="content">

@@ -21,6 +21,8 @@ class CreateAccounts extends Migration
             $table->double('balance', 8, 2);
             $table->string('bankname');
             $table->integer('number');
+            $table->softDeletes();
+
 
             $table->unsignedBigInteger('seam_id');
             $table->foreign('seam_id')

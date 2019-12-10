@@ -19,6 +19,7 @@ class CreateCustomers extends Migration
             $table->integer('cpf')->unique();
             $table->integer('phone');
             $table->integer('tel');
+            $table->softDeletes();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')

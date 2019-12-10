@@ -22,6 +22,8 @@ class Createaddress extends Migration
             $table->string('city');
             $table->string('state');
             $table->integer('cep');
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }

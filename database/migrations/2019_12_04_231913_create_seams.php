@@ -23,6 +23,8 @@ class CreateSeams extends Migration
             $table->date('date_in');
             $table->date('date_out');
             $table->string('type');
+            $table->softDeletes();
+
 
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')
