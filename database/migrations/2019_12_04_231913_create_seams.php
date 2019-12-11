@@ -15,14 +15,14 @@ class CreateSeams extends Migration
     {
         Schema::create('seams', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('product');
-            $table->double('price');
-            $table->string('medidas');
-            $table->boolean('status');
-            $table->string('count_clothes');
-            $table->date('date_in');
-            $table->date('date_out');
-            $table->string('type');
+            $table->string('product')->nullable();
+            $table->double('price')->nullable();
+            $table->string('medidas')->nullable();
+            $table->boolean('status')->nullable();
+            $table->string('count_clothes')->nullable();
+            $table->date('date_in')->nullable();
+            $table->date('date_out')->nullable();
+            $table->string('type')->nullable();
             $table->softDeletes();
 
 

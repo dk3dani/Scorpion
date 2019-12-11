@@ -16,11 +16,11 @@ class CreateAccounts extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->double('amount', 8, 2);
-            $table->double('openBalance', 8, 2);
-            $table->double('balance', 8, 2);
-            $table->string('bankname');
-            $table->integer('number');
+            $table->double('amount', 8, 2)->nullable();
+            $table->double('openBalance', 8, 2)->nullable();
+            $table->double('balance', 8, 2)->nullable();
+            $table->string('bankname')->nullable();
+            $table->integer('number')->nullable();
             $table->softDeletes();
 
 

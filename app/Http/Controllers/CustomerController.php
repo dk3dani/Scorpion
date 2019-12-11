@@ -42,8 +42,8 @@ class CustomerController extends Controller
         $data = $request->all();
        // dd($data);
         $validatedData = $request->validate([
-            'title' => ['required', 'unique:posts', 'max:255'],
-            'body' => ['required'],
+            'cpf' => ['required'],
+            'phone' => ['required'],
         ]);
 
         if($validatedData->fails()){

@@ -14,6 +14,6 @@ class Address extends Model
     ];
     public function customer()
     {
-      return $this->hasMany(Customer::class);
+        return $this->belongsTo('App\Models\Customer');
     }
 }

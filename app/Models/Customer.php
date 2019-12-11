@@ -25,7 +25,7 @@ class Customer extends Model
     $listaCustomers = DB::table('customers')
     ->join('users','users.id','=','customers.user_id')
     ->join('address','addres_id','=','customers.addres_id')
-    ->select('users.name','customers.phone','address.street','address.number',
+    ->select('customers.id','users.name','address.street','address.number',
     'address.district','address.complement', 'address.cep','address.city','customers.type','users.name','customers.tel')
 
     ->paginate($paginate);
@@ -36,8 +36,9 @@ return $listaCustomers;
     {
         return $this->belongsTo('App\User');
     }
-    public function addres()
+
+    public function address()
     {
-        return $this->belongsTo('App\Models\Address');
+      return $this->hasOne('App\Model\Address');
     }
 }

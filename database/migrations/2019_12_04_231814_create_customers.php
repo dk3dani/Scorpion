@@ -15,10 +15,10 @@ class CreateCustomers extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->enum('type', ['admin', 'client']);
-            $table->integer('cpf')->unique();
-            $table->integer('phone');
-            $table->integer('tel');
+            $table->enum('type', ['admin', 'client'])->nullable();
+            $table->integer('cpf')->unique()->nullable();
+            $table->integer('phone')->nullable();
+            $table->integer('tel')->nullable();
             $table->softDeletes();
 
             $table->unsignedBigInteger('user_id');

@@ -17,11 +17,11 @@ class Createaddress extends Migration
             $table->bigIncrements('id');
             $table->string('street');
             $table->integer('number');
-            $table->string('complement');
-            $table->string('district');
-            $table->string('city');
-            $table->string('state');
-            $table->integer('cep');
+            $table->string('complement')->nullable();
+            $table->string('district')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->integer('cep')->nullable();
             $table->softDeletes();
 
             $table->timestamps();
