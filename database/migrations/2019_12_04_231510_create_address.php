@@ -13,15 +13,21 @@ class Createaddress extends Migration
      */
     public function up()
     {
-        Schema::create('address', function (Blueprint $table) {
+        Schema::create('addresses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('street');
-            $table->integer('number');
-            $table->string('complement');
-            $table->string('district');
-            $table->string('city');
-            $table->string('state');
-            $table->integer('cep');
+            $table->string('street')->nullable();
+            $table->integer('number')->nullable();
+            $table->string('complement')->nullable();
+            $table->string('district')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->integer('cep')->nullable();
+            $table->softDeletes();
+            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->foreign('customer_id')
+      ->references('id')->on('customers')
+      ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
