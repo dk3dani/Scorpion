@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\DB;
 
 class Customer extends Model
 {
+   
     use SoftDeletes;
     protected $fillable = [
+        'name',
         'type',
         'cpf',
         'phone',
         'tel',
-        'user_id',
-        'addres_id',
         'deleted_at'
     ];
     protected $dates = ['deleted_at'];
@@ -23,21 +23,18 @@ class Customer extends Model
     public static function listaCustomers($paginate)
     {
     $listaCustomers = DB::table('customers')
-    ->join('users','users.id','=','customers.user_id')
-    ->join('address','addres_id','=','customers.addres_id')
-    ->select('users.name','customers.phone','address.street','address.number',
-    'address.district','address.complement', 'address.cep','address.city','customers.type','users.name','customers.tel')
+    ->join('addresses','customer_id','=','customers.id')
+    ->select('customers.id','customers.name','addresses.street','addresses.number',
+    'addresses.district','addresses.complement', 'addresses.cep','addresses.city','customers.type','customers.tel')
 
     ->paginate($paginate);
 
 return $listaCustomers;
 }
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
-    public function addres()
-    {
-        return $this->belongsTo('App\Models\Address');
-    }
+
+
+public function address() {
+    return $this -> hasOne(Address::class);
+  }
+
 }

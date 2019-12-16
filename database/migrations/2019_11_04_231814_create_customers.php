@@ -15,23 +15,12 @@ class CreateCustomers extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->enum('type', ['admin', 'client']);
-            $table->integer('cpf')->unique();
-            $table->integer('phone');
-            $table->integer('tel');
+            $table->string('name');
+            $table->enum('type', ['admin', 'client'])->nullable();
+            $table->double('cpf')->unique()->nullable();
+            $table->integer('phone')->nullable();
+            $table->integer('tel')->nullable();
             $table->softDeletes();
-
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-      ->references('id')->on('users')
-      ->onDelete('cascade');
-
-            $table->unsignedBigInteger('addres_id');
-            $table->foreign('addres_id')
-      ->references('id')->on('address')
-      ->onDelete('cascade');
-
-
             $table->timestamps();
         });
     }

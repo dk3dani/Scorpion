@@ -1,15 +1,18 @@
 <template>
+  <div>
+    <div class="form-inline">
+
+      <a v-if="criar && !modal" v-bind:href="criar">Criar</a>
+
+      <modallink  v-if="criar && modal" tipo="button" nome="meumodal" titulo="Criar" css=""></modallink>
 
 
-<div>
-    <div class="row form-inline ">
-    <a v-if="criar && !modal" v-bind:href="criar">Criar</a>
-  <modallink tipo="button" titulo="Criar" nome="meumodal"></modallink>
-    <div class="col-3 ml-auto"><input type="search" class="form-control" placeholder="Buscar" v-model="buscar" ></div>
-</div>
+      <div class="form-group pull-right">
+        <input type="search" class="form-control" placeholder="Buscar" v-model="buscar" />
 
 
-
+      </div>
+    </div>
     <table class="table table-striped table-hover">
       <thead>
         <tr>
@@ -57,7 +60,6 @@
       </tbody>
     </table>
   </div>
-
 
 </template>
 

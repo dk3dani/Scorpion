@@ -1,87 +1,96 @@
 @extends('layouts.master')
 
 @section('content')
-{{-- exibir erros--}}
-@if ($errors->all())
-<div class="alert alert-danger alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <page tamanho="12">
 
-@foreach ( $errors->all() as $key => $value )
-  <li>{{$value}}</li>
-@endforeach
-
-
-    </div>
+    @if($errors->all())
+      <div class="alert alert-danger alert-dismissible text-center" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @foreach ($errors->all() as $key => $value)
+          <li><strong>{{$value}}</strong></li>
+        @endforeach
+      </div>
     @endif
 
+    <card titulo="Lista de Clientes">
 
 
-	<card titulo="Lista de Clientes">
 
-        <table-list
-        v-bind:titulos="['#','Nome','telefone','Endereço','Bairro','Numero','Complemento','Cidade','Estado']"
+      <table-list
+      v-bind:titulos="['#','Nome','Rua','Bairro','Numero','Complemento','Cidade','Estado','Tipo','Tel']"
         v-bind:itens="{{json_encode($listaCustomers)}}"
-        ordem="desc" ordemcol="0"
-          criar="#"   detalhe="customers/" editar="admin/customers/" deletar="/customers/" token="{{ csrf_token() }}"
-        modal="sim"
+      ordem="asc" ordemcol="1"
+      criar="#criar" detalhe="/customers/" editar="/customers/" deletar="/customers/" token="{{ csrf_token() }}"
+      modal="sim"
 
-        >
-
-
-        </table-list>
-
+      ></table-list>
+      <div align="center">
+        {{$listaCustomers}}
+      </div>
     </card>
-    <modal nome="meumodal" titulo="Adicionar">
-        {{-- tem que dar um id ao form para relacionar ao button que esta no slot  --}}
-                <formulario id="formadd" css="" action="{{route( 'customers.store'  )}}" method="post" token="{{ csrf_token() }}">
-                        <div class="form-group">
-                                <label for="titulo">Titulo</label>
-                        <input type="text" class="form-control" name="name" id="name"  value="{{old('name')}}" placeholder="Titulo">
-                              </div>
-                              <div class="form-group">
-                                    <label for="descricao">Descrição</label>
-                                    <input type="text" class="form-control" id="phone" value="{{old('phone')}}" name="phone" placeholder="phone">
-                                  </div>
+
+  </page>
+
+  <modal nome="meumodal" titulo="Adicionar">
+    <formulario id="formAdicionar" css="" action="{{route('customers.store')}}" method="post" enctype="" token="{{ csrf_token() }}">
+
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="{{old('name')}}">
+      </div>
+      <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input type="number" class="form-control" id="cpf" name="cpf" placeholder="cpf" value="{{old('cpf')}}">
+      </div>
+      <div class="form-group">
+        <label for="phone">Telefone</label>
+        <input type="number" class="form-control" id="phone" name="phone" placeholder="phone" value="{{old('phone')}}">
+      </div>
+      <div class="form-group">
+        <label for="street">Rua</label>
+        <input type="text" class="form-control" id="street" name="street" placeholder="street" value="{{old('street')}}">
+      </div>
+      <div class="form-group">
+        <label for="number">Numero</label>
+        <input type="number" class="form-control" id="number" name="number" placeholder="number" value="{{old('number')}}">
+      </div>
+
+    </formulario>
+    <span slot="addbutton">
+      <button form="formAdicionar" class="btn btn-info">Adicionar</button>
+    </span>
+
+  </modal>
+  <modal nome="editar" titulo="Editar">
+    <formulario id="formEditar" v-bind:action="'/customers/'+$store.state.item.id" method="put" enctype="" token="{{ csrf_token() }}">
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Nome" v-model="$store.state.item.name">
+          </div>
+          <div class="form-group">
+            <label for="cpf">CPF</label>
+            <input type="number" class="form-control" id="cpf" name="cpf" placeholder="cpf" v-model="$store.state.item.cpf">
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input type="number" class="form-control" id="phone" name="phone" placeholder="phone" v-model="$store.state.item.phone">
+          </div>
+          <div class="form-group">
+            <label for="street">Rua</label>
+            <input type="text" class="form-control" id="street" name="street" placeholder="street" v-model="$store.state.item.street">
+          </div>
+          <div class="form-group">
+            <label for="number">Numero</label>
+            <input type="number" class="form-control" id="number" name="number" placeholder="number" v-model="$store.state.item.number">
+          </div>
 
 
-
-                </formulario>
-                {{-- button no slot deve receber o form com o id  --}}
-             <span slot="addbutton">
-                 <button form="formadd" class="btn btn-primary" type="submit">Adicionar</button>
-            </span>
-
-            <modal nome="editar" titulo="Editar">
-
-                <formulario id="formEdit" v-bind:action="'#'" method="put" enctype="" token="{{ csrf_token() }}">
-
-                  <div class="form-group">
-                    <label for="title">Nome</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Nome do projeto">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="description">Descrição</label>
-                    <input type="text" class="form-control" id="description" name="description" placeholder="Um pouco sobre o projeto">
-                  </div>
-
-                  </formulario>
-                    <span slot="addbutton">
-                   <button form="formEdit" class="btn btn-primary">Editar</button>
-                  </span>
-
-            </modal>
-
-            <modal nome="detalhe">
-                    Nome
-                   dois
-                  </modal>
-
-
-
-
-
-
-
-
+    </formulario>
+    <span slot="addbutton">
+      <button form="formEditar" class="btn btn-success">Atualizar</button>
+    </span>
+  </modal>
+  <modal nome="detalhe" v-bind:titulo="$store.state.item.name">
+    <p> Cpf: @{{$store.state.item.cpf}}</p>
+  </modal>
 @endsection

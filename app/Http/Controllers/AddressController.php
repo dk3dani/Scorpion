@@ -35,19 +35,27 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+
+
+
+         Address::create($data);
+
+         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Address  $address
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Address $address)
+    public function show($id)
     {
-        //
+        return Address::find($id);
     }
+
 
     /**
      * Show the form for editing the specified resource.

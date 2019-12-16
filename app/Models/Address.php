@@ -12,8 +12,8 @@ class Address extends Model
     protected $fillable = [
         'street', 'number', 'complement','district','city','state','cep'
     ];
-    public function customer()
-    {
-      return $this->hasMany(Customer::class);
-    }
+   
+    public function customer() {
+        return $this -> belongsTo(Customer::class);
+      }
 }

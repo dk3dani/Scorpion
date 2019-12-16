@@ -3213,6 +3213,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['titulos', 'itens', 'ordem', 'ordemcol', 'criar', 'detalhe', 'editar', 'deletar', 'token', 'modal'],
   data: function data() {
@@ -3392,6 +3394,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['nome', 'titulo']
 });
@@ -3423,12 +3426,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['tipo', 'nome', 'titulo', 'css', 'item', 'url'],
   methods: {
-    preencheFormulario: function preencheFormulario() {
+    preencheForm: function preencheForm() {
       var _this = this;
 
       axios.get(this.url + this.item.id).then(function (res) {
@@ -7897,7 +7898,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.bg-green,\n.callout.callout-success,\n.alert-success,\n.label-success,\n.modal-success .modal-body {\n  background-color: #00a65a !important;\n}\n.small-box {\n  border-radius: 2px;\n  position: relative;\n  display: block;\n  margin-bottom: 20px;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);\n}\n.small-box > .inner {\n  padding: 10px;\n}\n.small-box > .small-box-footer {\n  position: relative;\n  text-align: center;\n  padding: 3px 0;\n  color: #fff;\n  color: rgba(255, 255, 255, 0.8);\n  display: block;\n  z-index: 10;\n  background: rgba(0, 0, 0, 0.1);\n  text-decoration: none;\n}\n.small-box h3,\n.small-box p {\n  z-index: 5;\n}\n.small-box h3 {\n  font-size: 38px;\n  font-weight: bold;\n  margin: 0 0 10px 0;\n  white-space: nowrap;\n  padding: 0;\n}\n.small-box p {\n  font-size: 12px;\n}\n.small-box h3,\n.small-box p {\n  z-index: 5;\n}\np {\n  margin: 0 0 10px;\n}\np {\n  display: block;\n  -webkit-margin-before: 1em;\n          margin-block-start: 1em;\n  -webkit-margin-after: 1em;\n          margin-block-end: 1em;\n  -webkit-margin-start: 0px;\n          margin-inline-start: 0px;\n  -webkit-margin-end: 0px;\n          margin-inline-end: 0px;\n}\n.small-box .icon {\n  -webkit-transition: all 0.3s linear;\n  transition: all 0.3s linear;\n  position: absolute;\n  top: -10px;\n  right: 10px;\n  z-index: 0;\n  font-size: 90px;\n  color: rgba(0, 0, 0, 0.15);\n}\n.fa {\n  display: inline-block;\n  font: normal normal normal 14px/1 FontAwesome;\n  font-size: inherit;\n  text-rendering: auto;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n.small-box > .small-box-footer {\n  position: relative;\n  text-align: center;\n  padding: 3px 0;\n  color: #fff;\n  color: rgba(255, 255, 255, 0.8);\n  display: block;\n  z-index: 10;\n  background: rgba(0, 0, 0, 0.1);\n  text-decoration: none;\n}\n.small-box > .small-box-footer:hover {\n  color: #fff;\n  background: rgba(0, 0, 0, 0.15);\n}\n.small-box:hover {\n  text-decoration: none;\n  color: #f9f9f9;\n}\n.small-box:hover .icon {\n  font-size: 95px;\n}\n", ""]);
+exports.push([module.i, "\n.bg-green,\r\n.callout.callout-success,\r\n.alert-success,\r\n.label-success,\r\n.modal-success .modal-body {\r\n  background-color: #00a65a !important;\n}\n.small-box {\r\n  border-radius: 2px;\r\n  position: relative;\r\n  display: block;\r\n  margin-bottom: 20px;\r\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);\n}\n.small-box > .inner {\r\n  padding: 10px;\n}\n.small-box > .small-box-footer {\r\n  position: relative;\r\n  text-align: center;\r\n  padding: 3px 0;\r\n  color: #fff;\r\n  color: rgba(255, 255, 255, 0.8);\r\n  display: block;\r\n  z-index: 10;\r\n  background: rgba(0, 0, 0, 0.1);\r\n  text-decoration: none;\n}\n.small-box h3,\r\n.small-box p {\r\n  z-index: 5;\n}\n.small-box h3 {\r\n  font-size: 38px;\r\n  font-weight: bold;\r\n  margin: 0 0 10px 0;\r\n  white-space: nowrap;\r\n  padding: 0;\n}\n.small-box p {\r\n  font-size: 12px;\n}\n.small-box h3,\r\n.small-box p {\r\n  z-index: 5;\n}\np {\r\n  margin: 0 0 10px;\n}\np {\r\n  display: block;\r\n  -webkit-margin-before: 1em;\r\n          margin-block-start: 1em;\r\n  -webkit-margin-after: 1em;\r\n          margin-block-end: 1em;\r\n  -webkit-margin-start: 0px;\r\n          margin-inline-start: 0px;\r\n  -webkit-margin-end: 0px;\r\n          margin-inline-end: 0px;\n}\n.small-box .icon {\r\n  -webkit-transition: all 0.3s linear;\r\n  transition: all 0.3s linear;\r\n  position: absolute;\r\n  top: -10px;\r\n  right: 10px;\r\n  z-index: 0;\r\n  font-size: 90px;\r\n  color: rgba(0, 0, 0, 0.15);\n}\n.fa {\r\n  display: inline-block;\r\n  font: normal normal normal 14px/1 FontAwesome;\r\n  font-size: inherit;\r\n  text-rendering: auto;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\n}\n.small-box > .small-box-footer {\r\n  position: relative;\r\n  text-align: center;\r\n  padding: 3px 0;\r\n  color: #fff;\r\n  color: rgba(255, 255, 255, 0.8);\r\n  display: block;\r\n  z-index: 10;\r\n  background: rgba(0, 0, 0, 0.1);\r\n  text-decoration: none;\n}\n.small-box > .small-box-footer:hover {\r\n  color: #fff;\r\n  background: rgba(0, 0, 0, 0.15);\n}\n.small-box:hover {\r\n  text-decoration: none;\r\n  color: #f9f9f9;\n}\n.small-box:hover .icon {\r\n  font-size: 95px;\n}\r\n", ""]);
 
 // exports
 
@@ -7916,7 +7917,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.blue {\n    border-color: rgb(226, 204, 7);\n}\n.blue > .panel-heading {\n    color: #fff;\n    background-color: rgba(233, 193, 17, 0.966);\n    border-color: rgba(219, 206, 18, 0.952);\n}\n\n\n", ""]);
+exports.push([module.i, "\n.blue {\r\n    border-color: rgb(226, 204, 7);\n}\n.blue > .panel-heading {\r\n    color: #fff;\r\n    background-color: rgba(233, 193, 17, 0.966);\r\n    border-color: rgba(219, 206, 18, 0.952);\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -39673,17 +39674,24 @@ var render = function() {
   return _c("div", [
     _c(
       "div",
-      { staticClass: "row form-inline " },
+      { staticClass: "form-inline" },
       [
         _vm.criar && !_vm.modal
           ? _c("a", { attrs: { href: _vm.criar } }, [_vm._v("Criar")])
           : _vm._e(),
         _vm._v(" "),
-        _c("modallink", {
-          attrs: { tipo: "button", titulo: "Criar", nome: "meumodal" }
-        }),
+        _vm.criar && _vm.modal
+          ? _c("modallink", {
+              attrs: {
+                tipo: "button",
+                nome: "meumodal",
+                titulo: "Criar",
+                css: ""
+              }
+            })
+          : _vm._e(),
         _vm._v(" "),
-        _c("div", { staticClass: "col-3 ml-auto" }, [
+        _c("div", { staticClass: "form-group pull-right" }, [
           _c("input", {
             directives: [
               {
@@ -40065,6 +40073,8 @@ var render = function() {
             "div",
             { staticClass: "modal-footer" },
             [
+              _vm._t("addbutton"),
+              _vm._v(" "),
               _c(
                 "button",
                 {
@@ -40072,9 +40082,7 @@ var render = function() {
                   attrs: { type: "button", "data-dismiss": "modal" }
                 },
                 [_vm._v("Close")]
-              ),
-              _vm._v(" "),
-              _vm._t("addbutton")
+              )
             ],
             2
           )
@@ -40138,7 +40146,7 @@ var render = function() {
                   },
                   on: {
                     click: function($event) {
-                      return _vm.preencheFormulario()
+                      return _vm.preencheForm()
                     }
                   }
                 },
@@ -40158,7 +40166,7 @@ var render = function() {
                   },
                   on: {
                     click: function($event) {
-                      return _vm.preencheFormulario()
+                      return _vm.preencheForm()
                     }
                   }
                 },
@@ -40178,11 +40186,11 @@ var render = function() {
                   },
                   on: {
                     click: function($event) {
-                      return _vm.preencheFormulario()
+                      return _vm.preencheForm()
                     }
                   }
                 },
-                [_vm._v(_vm._s(_vm.titulo))]
+                [_vm._v(_vm._s(_vm.titulo) + " ")]
               )
             : _vm._e()
         ])
@@ -40231,7 +40239,7 @@ var render = function() {
                     "data-target": "#" + _vm.nome
                   }
                 },
-                [_vm._v(_vm._s(_vm.titulo))]
+                [_vm._v(_vm._s(_vm.titulo) + " ")]
               )
             : _vm._e()
         ])
