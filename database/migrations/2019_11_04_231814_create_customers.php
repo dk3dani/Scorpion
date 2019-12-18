@@ -16,10 +16,14 @@ class CreateCustomers extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->enum('type', ['admin', 'client'])->nullable();
-            $table->double('cpf')->unique()->nullable();
-            $table->integer('phone')->nullable();
-            $table->integer('tel')->nullable();
+            $table->enum('type', ['admin', 'Cliente'])->nullable();
+            $table->string('phone')->nullable();
+            $table->string('tel')->nullable();
+            $table->string('cpf')->unique()->nullable();
+            $table->string('street')->nullable();
+            $table->integer('number')->nullable();
+            $table->string('city')->nullable();
+            $table->string('district')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
