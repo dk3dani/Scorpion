@@ -116,7 +116,13 @@
       <button form="formEditar" class="btn btn-success">Atualizar</button>
     </span>
   </modal>
-  <modal nome="detalhe" v-bind:titulo="$store.state.item.name">
-    <p> Cpf: @{{$store.state.item.cpf}}</p>
+  <modal nome="detalhe">
+    <card titulo="Detalhes">
+
+        <p> Rua: @{{$store.state.item.street}}</p>
+        <p> numero: @{{$store.state.item.number}}</p>
+        <p> bairro: @{{$store.state.item.district}}</p>
+        <p> cidade: @{{$store.state.item.city}}</p>
+    </card>
   </modal>
 @endsection

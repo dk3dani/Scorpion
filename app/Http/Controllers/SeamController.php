@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Customer;
+use App\Models\Seam;
 use Illuminate\Http\Request;
 
-
-class CustomerController extends Controller
+class SeamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,12 +14,11 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-
     {
-        $listaCustomers = Customer::listaCustomers(6);
-        // $listaCustomers= json_encode(Customer::all());
-       // dd($listaCustomers);
-        return view('customer.index',compact('listaCustomers'));
+       $customers = Customer::all();
+
+        $listSeams = Seam::listSeams(6);
+        return view('seam.index',compact('listSeams','customers'));
     }
 
     /**
@@ -41,7 +41,7 @@ class CustomerController extends Controller
     {
         $data = $request->all();
         $validacao = \Validator::make($data,[
-            'name' => 'required|string|max:255'
+            'product' => 'required|string|max:255'
 
           ]);
 
@@ -49,11 +49,13 @@ class CustomerController extends Controller
             return redirect()->back()->withErrors($validacao)->withInput();
           }
 
-          Customer::create($data);
+
+          Seam::create($data);
           return redirect()->back();
+
     }
 
-   /**
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -61,21 +63,21 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        return Customer::find($id);
+        return Seam::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Customer  $customer
+     * @param  \App\Models\Seam  $seam
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(Seam $seam)
     {
         //
     }
 
- /**
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -86,7 +88,7 @@ class CustomerController extends Controller
     {
         $data = $request->all();
         $validacao = \Validator::make($data,[
-            'name' => 'required|string|max:255'
+            'product' => 'required|string|max:255'
 
           ]);
 
@@ -95,11 +97,12 @@ class CustomerController extends Controller
           }
 
 
-      Customer::find($id)->update($data);
+      Seam::find($id)->update($data);
       return redirect()->back();
     }
 
-   /**
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -107,7 +110,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        Customer::find($id)->forceDelete();
+        Seam::find($id)->forceDelete();
         return redirect()->back();
     }
 }

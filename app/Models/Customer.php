@@ -24,6 +24,9 @@ class Customer extends Model
         'deleted_at'
     ];
     protected $dates = ['deleted_at'];
+    public function seams() {
+        return $this ->hasMany(Seam::class);
+      }
 
     public static function listaCustomers($paginate)
     {
