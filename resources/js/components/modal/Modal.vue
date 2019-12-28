@@ -1,7 +1,7 @@
 <template>
 
 <div class="modal fade" v-bind:id="nome" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" >{{titulo}}</h5>
@@ -14,7 +14,7 @@
       </div>
       <div class="modal-footer">
             <slot name="addbutton"></slot>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
       </div>
     </div>

@@ -12,6 +12,9 @@ try {
 
     require('bootstrap');
     require('admin-lte');
+    require('sweetalert2');
+
+
 
 } catch (e) {}
 

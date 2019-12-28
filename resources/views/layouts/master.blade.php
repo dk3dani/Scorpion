@@ -1,10 +1,12 @@
-<html lang="en" style="height: auto;"><script src="blob:https://adminlte.io/91317193-81d5-4563-bb2d-03ec3acb3c56"></script><head>
+<html lang="en" style="height: auto;"><script src="sweetalert2.min.js"></script><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>Scorpion</title>
 <link rel="stylesheet" href="/css/app.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+
  <!-- Font Awesome Icons -->
 </head>
 
@@ -17,14 +19,6 @@
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Contact</a>
-        </li>
-      </ul>
-
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
              <li class="nav-item dropdown">
@@ -83,7 +77,7 @@
               </a>
             </li>
             <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
+                <a href="{{route('seams.index')}}" class="nav-link">
                   <i class="nav-icon fas fa-cut"></i>
                   <p>
                     Costuras
@@ -151,6 +145,7 @@
 
   <script src="/js/app.js"></script>
   <script src="https://kit.fontawesome.com/cd58fdfd71.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 
 
   </body></html>

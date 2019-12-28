@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Seam;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class SeamController extends Controller
      */
     public function index()
     {
-        //
+       $customers = Customer::all();
+
+        $listSeams = Seam::listSeams(6);
+        return view('seam.index',compact('listSeams','customers'));
     }
 
     /**
@@ -35,18 +39,31 @@ class SeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $validacao = \Validator::make($data,[
+            'product' => 'required|string|max:255'
+
+          ]);
+
+          if($validacao->fails()){
+            return redirect()->back()->withErrors($validacao)->withInput();
+          }
+
+
+          Seam::create($data);
+          return redirect()->back();
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Seam  $seam
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Seam $seam)
+    public function show($id)
     {
-        //
+        return Seam::find($id);
     }
 
     /**
@@ -64,22 +81,36 @@ class SeamController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Seam  $seam
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seam $seam)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $validacao = \Validator::make($data,[
+            'product' => 'required|string|max:255'
+
+          ]);
+
+          if($validacao->fails()){
+            return redirect()->back()->withErrors($validacao)->withInput();
+          }
+
+
+      Seam::find($id)->update($data);
+      return redirect()->back();
     }
+
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Seam  $seam
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Seam $seam)
+    public function destroy($id)
     {
-        //
+        Seam::find($id)->forceDelete();
+        return redirect()->back();
     }
 }

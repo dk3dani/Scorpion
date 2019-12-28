@@ -51,6 +51,8 @@ Vue.component('modal', require('./components/modal/Modal.vue').default);
 Vue.component('modallink', require('./components/modal/ModalLink.vue').default);
 Vue.component('formulario', require('./components/Formulario.vue').default);
 
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

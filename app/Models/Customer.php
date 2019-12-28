@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\DB;
 
 class Customer extends Model
 {
-   
+
     use SoftDeletes;
     protected $fillable = [
         'name',
+        'phone',
+        'street',
+        'number',
+        'district',
+        'city',
         'type',
         'cpf',
         'phone',
@@ -19,22 +24,20 @@ class Customer extends Model
         'deleted_at'
     ];
     protected $dates = ['deleted_at'];
+    public function seams() {
+        return $this ->hasMany(Seam::class);
+      }
 
     public static function listaCustomers($paginate)
     {
     $listaCustomers = DB::table('customers')
-    ->join('addresses','customer_id','=','customers.id')
-    ->select('customers.id','customers.name','addresses.street','addresses.number',
-    'addresses.district','addresses.complement', 'addresses.cep','addresses.city','customers.type','customers.tel')
+    ->select('customers.id','customers.name','customers.cpf','customers.phone','customers.street','customers.number',
+    'customers.district','customers.city','customers.type')
 
     ->paginate($paginate);
 
 return $listaCustomers;
 }
 
-
-public function address() {
-    return $this -> hasOne(Address::class);
-  }
 
 }

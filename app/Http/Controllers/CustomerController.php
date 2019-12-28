@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Address;
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 
 class CustomerController extends Controller
 {
@@ -41,20 +40,17 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $validacao = \Validator::make($data,[
+            'name' => 'required|string|max:255'
 
-        $customer =  Customer::create( [
-            "name" =>$request->input('name'),
-            "cpf" =>$request->input('cpf'),
-            "phone" =>$request->input('phone'),
+          ]);
 
-        ]);
-        $address = Address::create([
-            "street" => $data['street'],
-            "number"=> $data['number'],
+          if($validacao->fails()){
+            return redirect()->back()->withErrors($validacao)->withInput();
+          }
 
-        ]);
-        $customer->address()->save($address);
-        return redirect()->back();
+          Customer::create($data);
+          return redirect()->back();
     }
 
    /**
@@ -89,10 +85,18 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-       // dd($data);
+        $validacao = \Validator::make($data,[
+            'name' => 'required|string|max:255'
 
-        Customer::find($id)->update($data);
-        return redirect()->back();
+          ]);
+
+          if($validacao->fails()){
+            return redirect()->back()->withErrors($validacao)->withInput();
+          }
+
+
+      Customer::find($id)->update($data);
+      return redirect()->back();
     }
 
    /**
@@ -103,10 +107,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-       Address::where('customer_id' ,$id)->forceDelete();
-       Customer::where('id' ,$id)->forceDelete();
-
-
-        return redirect()->back()->with('success','Cadastrado com Sucesso');
+        Customer::find($id)->forceDelete();
+        return redirect()->back();
     }
 }

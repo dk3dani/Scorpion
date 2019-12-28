@@ -16,17 +16,16 @@ class CreateSeams extends Migration
         Schema::create('seams', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('product')->nullable();
+            $table->string('description')->nullable();
             $table->double('price')->nullable();
-            $table->string('medidas')->nullable();
+            $table->string('scale')->nullable();
             $table->boolean('status')->nullable();
             $table->string('count_clothes')->nullable();
             $table->date('date_in')->nullable();
             $table->date('date_out')->nullable();
             $table->string('type')->nullable();
             $table->softDeletes();
-
-
-            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('customer_id')->nullable();
             $table->foreign('customer_id')
       ->references('id')->on('customers')
       ->onDelete('cascade');

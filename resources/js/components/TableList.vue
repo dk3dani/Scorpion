@@ -27,7 +27,7 @@
 
           <td v-if="detalhe || editar || deletar">
             <form v-bind:id="index" v-if="deletar && token" v-bind:action="deletar+ item.id" method="post">
-              <input type="hidden" name="_method" value="DELETE" />
+              <input type="hidden" name="_method"  value="DELETE" />
               <input type="hidden" name="_token" v-bind:value="token" />
 
               <a v-if="detalhe && !modal" v-bind:href="detalhe">Detalhe |</a>
@@ -138,4 +138,9 @@
         }
       }
     }
+
+    
 </script>
+
+
+
