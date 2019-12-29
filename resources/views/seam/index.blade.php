@@ -13,7 +13,7 @@
     </div>
     @endif
 
-    <card titulo="Costuras">
+    <card titulo="Costuras" cor="bg-dark">
 
 
 

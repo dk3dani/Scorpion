@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\Seam;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SeamController extends Controller
 {
@@ -16,6 +17,9 @@ class SeamController extends Controller
     public function index()
     {
        $customers = Customer::all();
+       if(session('success_message')){
+        Alert::success('Sucesso', session('success_message'));
+       }
 
         $listSeams = Seam::listSeams(6);
         return view('seam.index',compact('listSeams','customers'));
@@ -51,7 +55,7 @@ class SeamController extends Controller
 
 
           Seam::create($data);
-          return redirect()->back();
+          return redirect()->back()->withSuccessMessage('Costura foi criado com sucesso');;
 
     }
 
@@ -98,7 +102,7 @@ class SeamController extends Controller
 
 
       Seam::find($id)->update($data);
-      return redirect()->back();
+      return redirect()->back()->withSuccessMessage('Costura atualizada com sucesso');;
     }
 
 

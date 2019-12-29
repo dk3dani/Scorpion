@@ -1,19 +1,14 @@
 <template>
   <div>
-    <div class="form-inline">
-
-      <a v-if="criar && !modal" v-bind:href="criar">Criar</a>
-
-      <modallink  v-if="criar && modal" tipo="button" nome="meumodal" titulo="Criar" css=""></modallink>
-
-
-      <div class="form-group pull-right">
-        <input type="search" class="form-control" placeholder="Buscar" v-model="buscar" />
-
-
-      </div>
+    <div class="row form-inline">
+        <div class="col-3">
+            <a v-if="criar && !modal" v-bind:href="criar">Criar</a>
+             <modallink  v-if="criar && modal" tipo="button" nome="meumodal" titulo="Criar" css=""></modallink>
+         </div>
+       <div class="col-3 ml-auto"><input type="search" class="form-control" placeholder="Buscar" v-model="buscar" >
+       </div>
     </div>
-    <table class="table table-striped table-hover">
+    <table class="table table-dark table-striped table-hover">
       <thead>
         <tr>
           <th style="cursor:pointer" v-on:click="ordenaColuna(index)" v-for="(titulo, index) in titulos">{{titulo}}</th>
@@ -31,29 +26,29 @@
               <input type="hidden" name="_token" v-bind:value="token" />
 
               <a v-if="detalhe && !modal" v-bind:href="detalhe">Detalhe |</a>
-              <modallink v-if="detalhe && modal" v-bind:item="item"  v-bind:url="detalhe" tipo="link" nome="detalhe" titulo=" Detalhe |" css=""></modallink>
+              <modallink v-if="detalhe && modal" v-bind:item="item"  v-bind:url="detalhe" tipo="button" nome="detalhe" titulo=" Detalhe " css=" btn btn-success"></modallink>
 
 
               <a v-if="editar && !modal" v-bind:href="editar">Editar |</a>
-              <modallink  v-if="editar && modal" v-bind:item="item"  v-bind:url="editar" tipo="link" nome="editar" titulo="Editar |" css=""></modallink>
+              <modallink  v-if="editar && modal" v-bind:item="item"  v-bind:url="editar" tipo="button" nome="editar" titulo="Editar " css=""></modallink>
 
-              <a href="#" v-on:click="executaForm(index)">Deletar</a>
+              <a href="#" class="btn btn-danger" v-on:click="executaForm(index)">Deletar</a>
             </form>
             <span v-if="!token">
               <a v-if="detalhe && !modal" v-bind:href="detalhe">Detalhe |</a>
-              <modallink v-if="detalhe && modal" v-bind:item="item"  v-bind:url="detalhe" tipo="link" nome="detalhe" titulo=" Detalhe |" css=""></modallink>
+              <modallink v-if="detalhe && modal" v-bind:item="item"  v-bind:url="detalhe" tipo="button" nome="detalhe" titulo=" Detalhe " css=""></modallink>
 
               <a  v-if="editar && !modal" v-bind:href="editar">Editar |</a>
-               <modallink  v-if="editar && modal" v-bind:item="item"  v-bind:url="editar" tipo="link" nome="editar" titulo="Editar |" css=""></modallink>
+               <modallink  v-if="editar && modal" v-bind:item="item"  v-bind:url="editar" tipo="button" nome="editar" titulo="Editar " css=""></modallink>
               <a v-if="deletar" v-bind:href="deletar">Deletar</a>
             </span>
             <span v-if="token && !deletar">
               <a v-if="detalhe && !modal" v-bind:href="detalhe">Detalhe |</a>
-              <modallink v-if="detalhe && modal" v-bind:item="item"  v-bind:url="detalhe" tipo="link" nome="detalhe" titulo=" Detalhe |" css=""></modallink>
+              <modallink v-if="detalhe && modal" v-bind:item="item"  v-bind:url="detalhe" tipo="button" nome="detalhe" titulo=" Detalhe" css=""></modallink>
 
 
               <a v-if="editar && !modal" v-bind:href="editar">Editar</a>
-              <modallink  v-if="editar && modal" v-bind:item="item"  v-bind:url="editar" tipo="link" nome="editar" titulo="Editar |" css=""></modallink>
+              <modallink  v-if="editar && modal" v-bind:item="item"  v-bind:url="editar" tipo="button" nome="editar" titulo="Editar" css=""></modallink>
             </span>
           </td>
         </tr>
@@ -75,7 +70,27 @@
       },
       methods:{
         executaForm: function(index){
-          document.getElementById(index).submit();
+           Swal.fire({
+  title: 'Voce deseja Excluir?',
+  text: "Você não poderá reverter isso!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#008000',
+  cancelButtonColor: '#d33',
+  cancelButtonText: 'Cancelar',
+  confirmButtonText: 'Sim, Eu quero deletar'
+
+}).then((result) => {
+
+  if (result.value) {
+ document.getElementById(index).submit();
+    Swal.fire(
+      'Deletado!',
+      'Seu registro foi deletado.',
+      'success'
+    )
+  }
+})
         },
         ordenaColuna: function(coluna){
           this.ordemAuxCol = coluna;
@@ -139,7 +154,7 @@
       }
     }
 
-    
+
 </script>
 
 
