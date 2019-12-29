@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 window.Vue = require('vue');
+window.Swal = require('sweetalert2');
 import Vuex from 'Vuex';
 Vue.use(Vuex);
 

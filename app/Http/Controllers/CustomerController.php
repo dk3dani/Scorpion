@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 
 class CustomerController extends Controller
@@ -18,7 +20,13 @@ class CustomerController extends Controller
         $listaCustomers = Customer::listaCustomers(6);
         // $listaCustomers= json_encode(Customer::all());
        // dd($listaCustomers);
+       if(session('success_message')){
+        Alert::success('Sucesso', session('success_message'));
+       }
+
         return view('customer.index',compact('listaCustomers'));
+
+
     }
 
     /**
@@ -50,7 +58,7 @@ class CustomerController extends Controller
           }
 
           Customer::create($data);
-          return redirect()->back();
+          return redirect()->back()->withSuccessMessage('Cliente foi criado com sucesso');
     }
 
    /**
@@ -96,7 +104,7 @@ class CustomerController extends Controller
 
 
       Customer::find($id)->update($data);
-      return redirect()->back();
+      return redirect()->back()->withSuccessMessage('Cliente atualizado com sucesso');
     }
 
    /**

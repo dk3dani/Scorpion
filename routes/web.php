@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,8 +21,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function(){
 
-    Route::resource('accounts', 'AccountController');
-    Route::resource('address', 'AddressController');
+    // Route::resource('accounts', 'AccountController');
+    // Route::resource('address', 'AddressController');
     Route::resource('customers', 'CustomerController');
     Route::resource('seams', 'SeamController');
 

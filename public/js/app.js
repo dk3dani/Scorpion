@@ -3210,11 +3210,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['titulos', 'itens', 'ordem', 'ordemcol', 'criar', 'detalhe', 'editar', 'deletar', 'token', 'modal'],
   data: function data() {
@@ -3226,7 +3221,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     executaForm: function executaForm(index) {
-      document.getElementById(index).submit();
+      Swal.fire({
+        title: 'Voce deseja Excluir?',
+        text: "Você não poderá reverter isso!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#008000',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Sim, Eu quero deletar'
+      }).then(function (result) {
+        if (result.value) {
+          document.getElementById(index).submit();
+          Swal.fire('Deletado!', 'Seu registro foi deletado.', 'success');
+        }
+      });
     },
     ordenaColuna: function ordenaColuna(coluna) {
       this.ordemAuxCol = coluna;
@@ -39359,7 +39368,7 @@ module.exports = function (css) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
-* sweetalert2 v9.5.3
+* sweetalert2 v9.5.4
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -41599,16 +41608,11 @@ function setParameters(params) {
   init(params);
 }
 
-function swalOpenAnimationFinished(popup, container) {
-  popup.removeEventListener(animationEndEvent, swalOpenAnimationFinished);
-  container.style.overflowY = 'auto';
-}
 /**
  * Open popup, add necessary classes and styles, fix scrollbar
  *
  * @param {Array} params
  */
-
 
 var openPopup = function openPopup(params) {
   var container = getContainer();
@@ -41637,14 +41641,22 @@ var openPopup = function openPopup(params) {
   }
 };
 
+function swalOpenAnimationFinished(event) {
+  var popup = getPopup();
+
+  if (event.target !== popup) {
+    return;
+  }
+
+  var container = getContainer();
+  popup.removeEventListener(animationEndEvent, swalOpenAnimationFinished);
+  container.style.overflowY = 'auto';
+}
+
 var setScrollingVisibility = function setScrollingVisibility(container, popup) {
   if (animationEndEvent && hasCssAnimation(popup)) {
     container.style.overflowY = 'hidden';
-    popup.addEventListener(animationEndEvent, function (e) {
-      if (e.target === popup) {
-        swalOpenAnimationFinished.bind(null, popup, container);
-      }
-    });
+    popup.addEventListener(animationEndEvent, swalOpenAnimationFinished);
   } else {
     container.style.overflowY = 'auto';
   }
@@ -42351,7 +42363,7 @@ Object.keys(instanceMethods).forEach(function (key) {
   };
 });
 SweetAlert.DismissReason = DismissReason;
-SweetAlert.version = '9.5.3';
+SweetAlert.version = '9.5.4';
 
 var Swal = SweetAlert;
 Swal["default"] = Swal;
@@ -42686,53 +42698,55 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      { staticClass: "form-inline" },
-      [
-        _vm.criar && !_vm.modal
-          ? _c("a", { attrs: { href: _vm.criar } }, [_vm._v("Criar")])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.criar && _vm.modal
-          ? _c("modallink", {
-              attrs: {
-                tipo: "button",
-                nome: "meumodal",
-                titulo: "Criar",
-                css: ""
-              }
-            })
-          : _vm._e(),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group pull-right" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.buscar,
-                expression: "buscar"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "search", placeholder: "Buscar" },
-            domProps: { value: _vm.buscar },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+    _c("div", { staticClass: "row form-inline" }, [
+      _c(
+        "div",
+        { staticClass: "col-3" },
+        [
+          _vm.criar && !_vm.modal
+            ? _c("a", { attrs: { href: _vm.criar } }, [_vm._v("Criar")])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.criar && _vm.modal
+            ? _c("modallink", {
+                attrs: {
+                  tipo: "button",
+                  nome: "meumodal",
+                  titulo: "Criar",
+                  css: ""
                 }
-                _vm.buscar = $event.target.value
-              }
+              })
+            : _vm._e()
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-3 ml-auto" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.buscar,
+              expression: "buscar"
             }
-          })
-        ])
-      ],
-      1
-    ),
+          ],
+          staticClass: "form-control",
+          attrs: { type: "search", placeholder: "Buscar" },
+          domProps: { value: _vm.buscar },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.buscar = $event.target.value
+            }
+          }
+        })
+      ])
+    ]),
     _vm._v(" "),
-    _c("table", { staticClass: "table table-striped table-hover" }, [
+    _c("table", { staticClass: "table table-dark table-striped table-hover" }, [
       _c("thead", [
         _c(
           "tr",
@@ -42807,10 +42821,10 @@ var render = function() {
                                   attrs: {
                                     item: item,
                                     url: _vm.detalhe,
-                                    tipo: "link",
+                                    tipo: "button",
                                     nome: "detalhe",
-                                    titulo: " Detalhe |",
-                                    css: ""
+                                    titulo: " Detalhe ",
+                                    css: " btn btn-success"
                                   }
                                 })
                               : _vm._e(),
@@ -42826,9 +42840,9 @@ var render = function() {
                                   attrs: {
                                     item: item,
                                     url: _vm.editar,
-                                    tipo: "link",
+                                    tipo: "button",
                                     nome: "editar",
-                                    titulo: "Editar |",
+                                    titulo: "Editar ",
                                     css: ""
                                   }
                                 })
@@ -42837,6 +42851,7 @@ var render = function() {
                             _c(
                               "a",
                               {
+                                staticClass: "btn btn-danger",
                                 attrs: { href: "#" },
                                 on: {
                                   click: function($event) {
@@ -42866,9 +42881,9 @@ var render = function() {
                                   attrs: {
                                     item: item,
                                     url: _vm.detalhe,
-                                    tipo: "link",
+                                    tipo: "button",
                                     nome: "detalhe",
-                                    titulo: " Detalhe |",
+                                    titulo: " Detalhe ",
                                     css: ""
                                   }
                                 })
@@ -42885,9 +42900,9 @@ var render = function() {
                                   attrs: {
                                     item: item,
                                     url: _vm.editar,
-                                    tipo: "link",
+                                    tipo: "button",
                                     nome: "editar",
-                                    titulo: "Editar |",
+                                    titulo: "Editar ",
                                     css: ""
                                   }
                                 })
@@ -42918,9 +42933,9 @@ var render = function() {
                                   attrs: {
                                     item: item,
                                     url: _vm.detalhe,
-                                    tipo: "link",
+                                    tipo: "button",
                                     nome: "detalhe",
-                                    titulo: " Detalhe |",
+                                    titulo: " Detalhe",
                                     css: ""
                                   }
                                 })
@@ -42937,9 +42952,9 @@ var render = function() {
                                   attrs: {
                                     item: item,
                                     url: _vm.editar,
-                                    tipo: "link",
+                                    tipo: "button",
                                     nome: "editar",
-                                    titulo: "Editar |",
+                                    titulo: "Editar",
                                     css: ""
                                   }
                                 })
@@ -55425,6 +55440,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.Swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 
 Vue.use(Vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /**

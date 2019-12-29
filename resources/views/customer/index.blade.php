@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-  <page tamanho="12">
+
 
     @if($errors->all())
       <div class="alert alert-danger alert-dismissible text-center" role="alert">
@@ -12,7 +12,7 @@
       </div>
     @endif
 
-    <card titulo="Lista de Clientes">
+    <card cor="bg-dark" titulo="Lista de Clientes">
 
 
 
@@ -29,7 +29,7 @@
       </div>
     </card>
 
-  </page>
+
 
   <modal nome="meumodal" titulo="Adicionar">
     <formulario id="formAdicionar" css="" action="{{route('customers.store')}}" method="post" enctype="" token="{{ csrf_token() }}">
