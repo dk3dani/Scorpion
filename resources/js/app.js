@@ -5,8 +5,10 @@
  */
 
 require('./bootstrap');
+require('./custom');
 window.Vue = require('vue');
 window.Swal = require('sweetalert2');
+Window.Select2 =require('vue-select2');
 import Vuex from 'Vuex';
 Vue.use(Vuex);
 

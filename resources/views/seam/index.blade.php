@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<page tamanho="12">
+
 
     @if($errors->all())
     <div class="alert alert-danger alert-dismissible text-center" role="alert">
@@ -18,14 +18,14 @@
 
 
         <table-list v-bind:titulos="['#','Cliente','Produto','Descrição','Valor']"
-            v-bind:itens="{{json_encode($listSeams)}}" ordem="asc" ordemcol="1" criar="#criar" detalhe="/seams/"
+            v-bind:itens="{{json_encode($listSeams)}}" ordem="desc" ordemcol="1" criar="#criar" detalhe="/seams/"
             editar="/seams/" deletar="/seams/" token="{{ csrf_token() }}" modal="sim"></table-list>
         <div align="center">
             {{$listSeams}}
         </div>
     </card>
 
-</page>
+
 
 <modal nome="meumodal" titulo="Adicionar">
     <formulario id="formAdicionar" css="" action="{{route('seams.store')}}" method="post" enctype=""
@@ -36,10 +36,10 @@
                 <input type="text" class="form-control" id="product" name="product" placeholder="Produto"
                     value="{{old('product')}}">
             </div>
-            <div class="col-6">
+            <div class="col-6"  style=" ">
                 <label for="customer_id">Clientes</label>
-                <select class="form-control js-example-templating " name="customer_id" id="customer_id">
-                    <option>Selecione um Cliente</option>
+                <select class="ls-select" name="customer_id"  id="nameid">
+                    <option></option>
 
                     @foreach ($customers as $customer)
                     <option value="{{ $customer->id }}">
@@ -97,6 +97,7 @@
                     value="{{old('date_out')}}">
             </div>
         </div>
+
     </formulario>
     <span slot="addbutton">
         <button form="formAdicionar" class="btn btn-success">Adicionar</button>
@@ -153,6 +154,7 @@
         </div>
 
 
+
     </formulario>
     <span slot="addbutton">
         <button form="formEditar" class="btn btn-success">Atualizar</button>
@@ -169,6 +171,10 @@
 
     </card>
 </modal>
+
+
+
+
 @endsection
 
 

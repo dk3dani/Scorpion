@@ -1,11 +1,13 @@
-<html lang="en" style="height: auto;"><script src="sweetalert2.min.js"></script><head>
+<html lang="en" style="height: auto;">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>Scorpion</title>
 <link rel="stylesheet" href="/css/app.css">
-<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
 
  <!-- Font Awesome Icons -->
 </head>
@@ -122,6 +124,9 @@
                 @yield('content')
 
 
+
+
+
         </div>
         <!-- /.container-fluid -->
       </div>
@@ -147,7 +152,9 @@
   <script src="https://kit.fontawesome.com/cd58fdfd71.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 @include('sweetalert::alert')
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/i18n/pt-BR.js"></script>
 
   </body>
   </html>

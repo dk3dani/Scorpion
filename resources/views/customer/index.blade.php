@@ -19,7 +19,7 @@
       <table-list
       v-bind:titulos="['#','Nome','CPF','Celular','Rua','Nº','Bairro','Cidade','Tipo']"
         v-bind:itens="{{json_encode($listaCustomers)}}"
-      ordem="asc" ordemcol="1"
+      ordem="desc" ordemcol="1"
       criar="#criar" detalhe="/customers/" editar="/customers/" deletar="/customers/" token="{{ csrf_token() }}"
       modal="sim"
 
