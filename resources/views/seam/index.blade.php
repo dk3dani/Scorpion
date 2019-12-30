@@ -57,7 +57,7 @@
             </div>
             <div class="col-6">
                 <label for="price">Valor</label>
-                <input type="text" class="form-control" id="price" name="price" placeholder="price"
+                <input type="text" class=" money form-control" id="price" name="price" placeholder="price"
                     value="{{old('price')}}">
             </div>
         </div>
