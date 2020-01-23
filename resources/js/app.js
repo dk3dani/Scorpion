@@ -6,11 +6,13 @@
 
 require('./bootstrap');
 require('./custom');
-window.Vue = require('vue');
 window.Swal = require('sweetalert2');
-Window.Select2 =require('vue-select2');
-import Vuex from 'Vuex';
+Window.Select2 = require('vue-select2');
+import Vue from 'vue'
+import Vuex from 'vuex'
 Vue.use(Vuex);
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
