@@ -74,10 +74,10 @@
   </div>
 </div>
       <div class="form-group">
-        <label for="type">Autor</label>
+        <label for="type">Tipo</label>
         <select class="form-control" id="type" name="type">
           <option {{(old('type') && old('type') == 'N' ? 'selected' : '' )}} value="admin">Admin</option>
-          <option {{(old('type') && old('type') == 'S' ? 'selected' : ''  )}} {{(!old('type') ? 'selected' : ''  )}} value="client">Cliente</option>
+          <option {{(old('type') && old('type') == 'S' ? 'selected' : ''  )}} {{(!old('type') ? 'selected' : ''  )}} value="cliente">Cliente</option>
         </select>
       </div>
 

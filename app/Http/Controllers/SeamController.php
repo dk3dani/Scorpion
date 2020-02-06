@@ -44,6 +44,12 @@ class SeamController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+          $value = $request->price;
+         $formattedValue = str_replace(',', '.', str_replace('.', '', $value));
+        //  dd( $data);
+             $data["price"] = $formattedValue;
+
+
         $validacao = \Validator::make($data,[
             'product' => 'required|string|max:255'
 
@@ -52,9 +58,8 @@ class SeamController extends Controller
           if($validacao->fails()){
             return redirect()->back()->withErrors($validacao)->withInput();
           }
-
-
           Seam::create($data);
+
           return redirect()->back()->withSuccessMessage('Costura foi criado com sucesso');;
 
     }
