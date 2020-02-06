@@ -17,7 +17,7 @@ class CreateSeams extends Migration
             $table->bigIncrements('id');
             $table->string('product')->nullable();
             $table->string('description')->nullable();
-            $table->double('price')->nullable();
+            $table->double('price', 10, 2)->nullable();
             $table->string('scale')->nullable();
             $table->boolean('status')->nullable();
             $table->string('count_clothes')->nullable();

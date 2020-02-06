@@ -14,9 +14,6 @@
     @endif
 
     <card titulo="Costuras" cor="bg-dark">
-
-
-
         <table-list v-bind:titulos="['#','Cliente','Produto','Descrição','Valor']"
             v-bind:itens="{{json_encode($listSeams)}}" ordem="desc" ordemcol="1" criar="#criar" detalhe="/seams/"
             editar="/seams/" deletar="/seams/" token="{{ csrf_token() }}" modal="sim"></table-list>
@@ -176,5 +173,7 @@
 
 
 @endsection
+
+
 
 

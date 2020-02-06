@@ -22,6 +22,10 @@ class Seam extends Model
         'date_in',
         'customer_id'
     ];
+
+    public function balance() {
+        return $this ->hasMany(Balance::class);
+      }
     public function customer() {
         return $this -> belongsTo(Customer::class);
       }

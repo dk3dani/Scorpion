@@ -88,7 +88,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
+              <a href="{{route('balances.index')}}" class="nav-link">
                   <i class="nav-icon fas fa-dollar-sign"></i>
                   <p>
                     Pagamento
@@ -125,7 +125,7 @@
 
 
 
-                
+
 
         </div>
         <!-- /.container-fluid -->

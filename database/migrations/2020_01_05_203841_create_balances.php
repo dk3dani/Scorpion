@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCustomers extends Migration
+class CreateBalances extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,22 @@ class CreateCustomers extends Migration
      */
     public function up()
     {
-        Schema::create('customers', function (Blueprint $table) {
+        Schema::create('balances', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->enum('type', ['admin', 'cliente'])->nullable();
-            $table->string('phone')->nullable();
-            $table->string('tel')->nullable();
-            $table->string('cpf')->unique()->nullable();
-            $table->string('street')->nullable();
+            $table->double('amount', 10, 2)->nullable();
+            $table->double('openBalance', 10, 2)->nullable();
+            $table->double('balance', 10, 2)->nullable();
+            $table->string('bankname')->nullable();
             $table->integer('number')->nullable();
-            $table->string('city')->nullable();
-            $table->string('district')->nullable();
             $table->softDeletes();
+
+
+            $table->unsignedBigInteger('seam_id');
+            $table->foreign('seam_id')
+      ->references('id')->on('seams')
+      ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -36,6 +40,6 @@ class CreateCustomers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customers');
+        Schema::dropIfExists('balances');
     }
 }
