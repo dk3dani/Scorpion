@@ -16,13 +16,13 @@ class SeamController extends Controller
      */
     public function index()
     {
-       $customers = Customer::all();
-       if(session('success_message')){
-        Alert::success('Sucesso', session('success_message'));
-       }
+        $customers = Customer::all();
+        if (session('success_message')) {
+            Alert::success('Sucesso', session('success_message'));
+        }
 
         $listSeams = Seam::listSeams(6);
-        return view('seam.index',compact('listSeams','customers'));
+        return view('seam.index', compact('listSeams', 'customers'));
     }
 
     /**
@@ -44,24 +44,23 @@ class SeamController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-          $value = $request->price;
-         $formattedValue = str_replace(',', '.', str_replace('.', '', $value));
+        $value = $request->price;
+        $formattedValue = str_replace(',', '.', str_replace('.', '', $value));
         //  dd( $data);
-             $data["price"] = $formattedValue;
+        $data["price"] = $formattedValue;
 
 
-        $validacao = \Validator::make($data,[
+        $validacao = \Validator::make($data, [
             'product' => 'required|string|max:255'
 
-          ]);
+        ]);
 
-          if($validacao->fails()){
+        if ($validacao->fails()) {
             return redirect()->back()->withErrors($validacao)->withInput();
-          }
-          Seam::create($data);
+        }
+        Seam::create($data);
 
-          return redirect()->back()->withSuccessMessage('Costura foi criado com sucesso');;
-
+        return redirect()->back()->withSuccessMessage('Costura foi criado com sucesso');;
     }
 
     /**
@@ -96,18 +95,19 @@ class SeamController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $validacao = \Validator::make($data,[
+        $validacao = \Validator::make($data, [
             'product' => 'required|string|max:255'
 
-          ]);
+        ]);
 
-          if($validacao->fails()){
+        if ($validacao->fails()) {
             return redirect()->back()->withErrors($validacao)->withInput();
-          }
+        }
 
+        $data['paid'] = $request->input('paid') ? true : false;
 
-      Seam::find($id)->update($data);
-      return redirect()->back()->withSuccessMessage('Costura atualizada com sucesso');;
+        Seam::find($id)->update($data);
+        return redirect()->back()->withSuccessMessage('Costura atualizada com sucesso');;
     }
 
 

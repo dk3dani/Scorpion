@@ -27,3 +27,4 @@ Route::middleware(['auth'])->group(function(){
 
   });
 
+Route::get('/sales', 'SaleController@index')->name('sales');

@@ -65,9 +65,9 @@
                     value="{{old('street')}}">
             </div>
             <div class="col-6">
-                <label for="status">Status</label>
-                <input type="text" class="form-control" id="status" name="status" placeholder="status"
-                    value="{{old('status')}}">
+                <label for="paid">Pago</label>
+                <input type="checkbox" id="paid" name="paid" placeholder="Pago"
+                    value="{{old('paid')}}">
             </div>
         </div>
         <div class="row mb-3 ">
@@ -130,9 +130,9 @@
                 v-model="$store.state.item.count_clothes">
         </div>
         <div class="form-group">
-            <label for="status">status</label>
-            <input type="text" class="form-control" id="status" name="status" placeholder="status"
-                v-model="$store.state.item.status">
+            <label for="paid">Pago</label>
+            <input type="checkbox" id="paid" name="paid" placeholder="Pago"
+                v-model="$store.state.item.paid">
         </div>
         <div class="form-group">
             <label for="type">Tipo</label>
@@ -162,7 +162,7 @@
         <p> Data entrada: @{{$store.state.item.date_in}}</p>
         <p> Data saida: @{{$store.state.item.date_out}}</p>
         <p> tipo: @{{$store.state.item.type}}</p>
-        <p> status: @{{$store.state.item.status}}</p>
+        <p> Pago: @{{$store.state.item.paid}}</p>
         <p> Medidas: @{{$store.state.item.scale}}</p>
         <p> Quantidade: @{{$store.state.item.count_clothes}}</p>
 

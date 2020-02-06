@@ -15,13 +15,24 @@ class Seam extends Model
         'description',
         'price',
         'scale',
-        'status',
+        'paid',
+        'paid_at',
         'count_clothes',
         'type',
         'date_out',
         'date_in',
         'customer_id'
     ];
+
+    public function setPaidAttribute ($paid) {
+        if ($paid) {
+            $this->attributes['paid_at'] = new \DateTime();
+        } else {
+            $this->attributes['paid_at'] = null;
+        }
+
+        $this->attributes['paid'] = $paid;
+    }
 
     public function balance() {
         return $this ->hasMany(Balance::class);
@@ -38,8 +49,8 @@ class Seam extends Model
 
     ->paginate($paginate);
 
-return $listSeams;
-}
+    return $listSeams;
+    }
 
 
 }

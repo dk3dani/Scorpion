@@ -97,7 +97,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
+              <a href="{{ route('sales') }}" class="nav-link">
                   <i class="nav-icon fas fa-shopping-cart"></i>
                   <p>
                     vendas
@@ -120,13 +120,7 @@
       <div class="content">
 
         <div class="container-fluid">
-
-                @yield('content')
-
-
-
-
-
+            @yield('content')
         </div>
         <!-- /.container-fluid -->
       </div>

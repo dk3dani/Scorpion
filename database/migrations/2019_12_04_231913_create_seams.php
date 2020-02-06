@@ -19,7 +19,8 @@ class CreateSeams extends Migration
             $table->string('description')->nullable();
             $table->double('price', 10, 2)->nullable();
             $table->string('scale')->nullable();
-            $table->boolean('status')->nullable();
+            $table->boolean('paid')->nullable();
+            $table->date('paid_at')->nullable();
             $table->string('count_clothes')->nullable();
             $table->date('date_in')->nullable();
             $table->date('date_out')->nullable();
