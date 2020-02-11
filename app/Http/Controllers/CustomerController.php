@@ -17,7 +17,7 @@ class CustomerController extends Controller
     public function index()
 
     {
-        $listaCustomers = Customer::listaCustomers(6);
+        $listaCustomers = Customer::listaCustomers(2);
         // $listaCustomers= json_encode(Customer::all());
        // dd($listaCustomers);
        if(session('success_message')){

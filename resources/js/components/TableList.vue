@@ -23,7 +23,7 @@
       </thead>
       <tbody>
         <tr v-for="(item,index) in lista">
-          <td v-for="i in item">{{i}}</td>
+          <td v-for="i in item">{{i}}</td> 
 
           <td v-if="detalhe || editar || deletar">
             <form

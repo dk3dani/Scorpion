@@ -3,6 +3,7 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
@@ -22,6 +23,25 @@ class Seam extends Model
         'date_out',
         'date_in',
         'customer_id'
+    ];
+
+   protected $dates = [
+
+         'date_in',
+        'date_out',
+        'updated_at',
+        'created_at',
+         ' paid_at'
+
+];
+   
+
+    protected $casts = [
+        'active' => 'boolean',
+        'created_at' => 'datetime:d/m/Y',
+        'date_in' => 'datetime:d/m/Y',
+        'date_out' => 'datetime:d/m/Y',
+        'paid_at'  => 'datetime:d/m/Y',
     ];
 
     public function setPaidAttribute ($paid) {
