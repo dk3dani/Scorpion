@@ -17,7 +17,6 @@ class Customer extends Model
         'number',
         'district',
         'city',
-        'type',
         'cpf',
         'phone',
         'tel',
@@ -32,7 +31,7 @@ class Customer extends Model
     {
     $listaCustomers = DB::table('customers')
     ->select('customers.id','customers.name','customers.cpf','customers.phone','customers.street','customers.number',
-    'customers.district','customers.city','customers.type')
+    'customers.district','customers.city')
 
     ->paginate($paginate);
 
