@@ -29,7 +29,7 @@
       <th scope="row">{{ $seam->id}}</th>
       <td>{{ $seam->customer->name ?? 'Sem cliente' }}</td>
       <td>{{ $seam->product }}</td>
-      <td > R$ {{ number_format($seam->price, 2, ',', '.') }}</td>
+      <td >R$ {{$seam->price}}</td>
       <td>{{ date('d/m/Y', strtotime($seam->paid_at)) }}</td>
 
     </tr>

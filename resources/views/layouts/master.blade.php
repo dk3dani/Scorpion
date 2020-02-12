@@ -58,7 +58,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="" class="img-circle elevation-2" alt="User Image">
+            <img src="https://image.freepik.com/vetores-gratis/avatars-user-pack_23-2147502629.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="#" class="d-block"> {{ Auth::user()->name }}</a>
@@ -74,7 +74,7 @@
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   Clientes
-                  <span class="right badge badge-danger">New</span>
+
                 </p>
               </a>
             </li>
@@ -83,7 +83,7 @@
                   <i class="nav-icon fas fa-cut"></i>
                   <p>
                     Costuras
-                    <span class="right badge badge-danger">New</span>
+
                   </p>
                 </a>
               </li>
@@ -92,16 +92,15 @@
                   <i class="nav-icon fas fa-dollar-sign"></i>
                   <p>
                     Pagamento
-                    <span class="right badge badge-danger">Novo</span>
+
                   </p>
                 </a>
               </li>
               <li class="nav-item">
               <a href="{{ route('sales') }}" class="nav-link">
-                  <i class="nav-icon fas fa-shopping-cart"></i>
+                <i class="nav-icon fas fa-file-invoice-dollar"></i>
                   <p>
-                    vendas
-                    <span class="right badge badge-danger">New</span>
+                    Relatório de Pagamentos
                   </p>
                 </a>
               </li>
@@ -150,6 +149,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/i18n/pt-BR.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
 
 
   </body>

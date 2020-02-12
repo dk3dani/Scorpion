@@ -14,7 +14,7 @@
     @endif
 
     <card titulo="Costuras" cor="bg-dark">
-        <table-list v-bind:titulos="['#','Cliente','Produto','Descrição','Valor']"
+        <table-list v-bind:titulos="['#','Cliente','Produto','Descrição']"
                     v-bind:itens="{{json_encode($listSeams,true)}}" ordem="desc" ordemcol="1" criar="#criar"
                     detalhe="/seams/"
                     editar="/seams/" deletar="/seams/" token="{{ csrf_token() }}" modal="sim">
@@ -34,10 +34,10 @@
             <div class="row mb-3">
                 <div class="col-6">
                     <label for="product">Produto</label>
-                    <input type="text" class="form-control" id="product" name="product" placeholder="Produto"
+                    <input type="text" class="form-control" id="product" name="product" placeholder="Ex: Camiseta branca"
                            value="{{old('product')}}">
                 </div>
-                <div class="col-6" style=" ">
+                <div class="col-6" >
                     <label for="customer_id">Clientes</label>
                     <select class="ls-select" name="customer_id" id="nameid">
                         <option></option>
@@ -53,19 +53,19 @@
             <div class="row mb-3">
                 <div class="col-6">
                     <label for="description">Descrição</label>
-                    <textarea class="form-control" id="description" name="description" placeholder="description"
+                    <textarea class="form-control" id="description" name="description" placeholder="Descrição do Serviço"
                               value="{{old('description')}}" rows="1"></textarea>
                 </div>
                 <div class="col-6">
                     <label for="price">Valor</label>
-                    <input type="text" class=" money form-control" id="price" name="price" placeholder="price"
+                    <input type="text" class=" money form-control" id="price" name="price" placeholder="Ex: 12,00"
                            value="{{old('price')}}">
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-6">
                     <label for="scale">Medidas</label>
-                    <input type="text" class="form-control" id="scale" name="scale" placeholder="scale"
+                    <input type="text" class="form-control" id="scale" name="scale" placeholder="Ex: Largura 80cm - altura 120cm"
                            value="{{old('street')}}">
                 </div>
                 <div class="col-6">
@@ -73,7 +73,7 @@
                     <select class="form-control" id="paid" name="paid">
                         <option {{(old('paid') && old('paid') == 'N' ? 'selected' : '' )}} value="1">PAGAR</option>
                         <option
-                            {{(old('paid') && old('paid') == 'S' ? 'selected' : ''  )}} {{(!old('type') ? 'selected' : ''  )}} value="0">
+                            {{(old('paid') && old('paid') == 'S' ? 'selected' : ''  )}} {{(!old('paid') ? 'selected' : ''  )}} value="0">
                             A RECEBER
                         </option>
                     </select>
@@ -83,12 +83,12 @@
                 <div class="col-6">
                     <label for="count_clothes">Quantidade de peças</label>
                     <input type="text" class="form-control" id="count_clothes" name="count_clothes"
-                           placeholder="count_clothes"
+                        placeholder="Ex: 3"
                            value="{{old('count_clothes')}}">
                 </div>
                 <div class="col-6">
                     <label for="type">Tipo</label>
-                    <input type="text" class="form-control" id="type" name="type" placeholder="type"
+                    <input type="text" class="form-control" id="type" name="type" placeholder="Ex: Reforma, Ajustes... "
                            value="{{old('type')}}">
                 </div>
             </div>
@@ -99,7 +99,7 @@
                            value="{{old('date_in')}}">
                 </div>
                 <div class="col-6">
-                    <label for="date_out">Data de entrega</label>
+                    <label for="date_out"> Data de entrega</label>
                     <input type="date" class="form-control" id="date_out" name="date_out" placeholder="date_out"
                            value="{{old('date_out')}}">
                 </div>
@@ -111,85 +111,124 @@
     </span>
 
     </modal>
-    <modal nome="editar" titulo="Editar">
+    <modal nome="editar" icon="far fa-edit" titulo="Editar">
         <formulario id="formEditar" v-bind:action="'/seams/'+$store.state.item.id" method="put" enctype=""
                     token="{{ csrf_token() }}">
 
-            <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="custom-content-below-home-tab" data-toggle="pill"
-                       href="#custom-content-below-home" role="tab" aria-controls="custom-content-below-home"
-                       aria-selected="true">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " id="custom-content-below-profile-tab" data-toggle="pill"
-                       href="#custom-content-below-profile" role="tab" aria-controls="custom-content-below-profile"
-                       aria-selected="false">Profile</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="custom-content-below-tabContent">
-                <div class="tab-pane fade" id="custom-content-below-home" role="tabpanel"
-                     aria-labelledby="custom-content-below-home-tab">
-                    <div class="form-group">
-                        <label for="product">Produto</label>
-                        <input type="text" class="form-control" id="product" name="product" placeholder="product"
-                               v-model="$store.state.item.product">
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="product">Produto</label>
+                                <input type="text" class="form-control" id="product" name="product" placeholder="ex:Camiseta branca"
+                                       v-model="$store.state.item.product">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="type">Tipo</label>
+                                <input type="text" class="form-control" id="type" name="type" placeholder="Ex:Reforma, Ajustes... "
+                                       v-model="$store.state.item.type">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <label for="price">Valor</label>
+                                <input type="text" class=" money form-control" id="price" name="price" placeholder="Ex: 12,00"
+                                       v-model="$store.state.item.price">
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <label for="scale">Medida</label>
+                                <input type="text" class="form-control" id="scale" name="scale" placeholder="Ex: Largura 80cm - altura 120cm"
+                                       v-model="$store.state.item.scale">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <label for="count_clothes">Quantidade</label>
+                                <input type="number" class="form-control" id="count_clothes" name="count_clothes"
+                                       placeholder="Ex: 3"
+                                       v-model="$store.state.item.count_clothes">
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <label for="paid">FORMA DE PAGAMENTO</label>
+                                <select class="form-control" v-model="$store.state.item.paid" id="paid" name="paid">
+                                    <option {{(old('paid') && old('paid') == 'N' ? 'selected' : '' )}} value="1">PAGAR</option>
+                                    <option
+                                        {{(old('paid') && old('paid') == 'S' ? 'selected' : ''  )}} {{(!old('paid') ? 'selected' : ''  )}} value="0">
+                                        A RECEBER
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="description">Descrição</label>
-                        <input type="text" class="form-control" id="description" name="description"
-                               placeholder="description"
-                               v-model="$store.state.item.description">
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Valor</label>
-                        <input type="text" class=" money form-control" id="price" name="price" placeholder="price"
-                               v-model="$store.state.item.price">
-                    </div>
-                    <div class="form-group">
-                        <label for="scale">Medida</label>
-                        <input type="text" class="form-control" id="scale" name="scale" placeholder="scale"
-                               v-model="$store.state.item.scale">
-                    </div>
-                    <div class="form-group">
-                        <label for="count_clothes">Quantidade</label>
-                        <input type="number" class="form-control" id="count_clothes" name="count_clothes"
-                               placeholder="count_clothes"
-                               v-model="$store.state.item.count_clothes">
-                    </div>
-                    <div class="form-group">
-                        <label for="paid">FORMA DE PAGAMENTO</label>
-                        <select class="form-control" v-model="$store.state.item.paid" id="paid" name="paid">
-                            <option {{(old('paid') && old('paid') == 'N' ? 'selected' : '' )}} value="1">PAGAR</option>
-                            <option
-                                {{(old('paid') && old('paid') == 'S' ? 'selected' : ''  )}} {{(!old('paid') ? 'selected' : ''  )}} value="0">
-                                A RECEBER
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="type">Tipo</label>
-                        <input type="text" class="form-control" id="type" name="type" placeholder="type"
-                               v-model="$store.state.item.type">
-                    </div>
-                </div>
-                <div class="tab-pane fade active show" id="custom-content-below-profile" role="tabpanel"
-                     aria-labelledby="custom-content-below-profile-tab">
-                    <div class="form-group">
-                        <label for="date_in">Data de entrada</label>
-                        <input type="date" class="form-control" id="date_in" name="date_in" placeholder="date_in"
-                               v-model="$store.state.item.date_in">
-                    </div>
-                    <div class="form-group">
-                        <label for="date_out">Data de entrega</label>
-                        <input type="date" class="form-control" id="date_out" value="{{old('date_out')}}"
-                               name="date_out" placeholder="date_out"
-                               v-model="$store.state.item.date_out">
-                    </div>
-                </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
 
-            </div>
+                            <div class="form-group">
+                                <label for="date_in">Data de entrada</label>
+                                <input type="date" class="form-control" id="date_in" name="date_in" placeholder="date_in"
+                                       v-model="$store.state.item.date_in">
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <label for="date_out">Data de entrega</label>
+                                <input type="date" class="form-control"  id="date_out" value="{{old('date_out')}}"
+                                       name="date_out" placeholder="date_out"
+                                       v-model="$store.state.item.date_out">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="description">Descrição</label>
+                                <textarea class="form-control" id="description" name="description"  v-model="$store.state.item.description" placeholder="Descrição do Serviço"
+                                value="{{old('description')}}" rows="4"></textarea>
+
+                            </div>
+
+                    </div>
+                        <div class="col-6"></div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         </formulario>
@@ -216,12 +255,12 @@
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <p class="ml-2" style="font-size: 18px">
-                            Data de Entrada <span class="float-right mr-2 badge bg-primary"> @{{$store.state.item.date_in}}</span>
+                            Data de Entrada <span class="float-right mr-2 badge bg-primary" v-if="$store.state.item.date_in"> @{{$store.state.item.date_in | timeformat}}</span>
                         </p>
                     </li>
                     <li class="nav-item">
                         <p class="ml-2" style="font-size: 18px">
-                            Data de Saida <span class="float-right mr-2 badge bg-Warning">  @{{$store.state.item.date_out}}</span>
+                            Data de Saida <span class="float-right mr-2 badge bg-Warning"v-if="$store.state.item.date_out"> @{{$store.state.item.date_out | timeformat}}</span>
                         </p>
                     </li>
                     <li class="nav-item">
@@ -241,7 +280,7 @@
                     </li>
                     <li class="nav-item">
                         <p class="ml-2" style="font-size: 18px">
-                            Valor: <span class="float-right mr-2 badge bg-navy">R$ @{{$store.state.item.price}}</span>
+                            Valor: <span class="float-right mr-2 badge bg-navy"> R$ @{{$store.state.item.price}}</span>
                         </p>
                     </li>
                     <li class="nav-item">
