@@ -4,13 +4,19 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+
 require('./bootstrap');
 require('./custom');
+window.moment = require('moment');
 window.Swal = require('sweetalert2');
 Window.Select2 = require('vue-select2');
 import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex);
+
+Vue.filter('timeformat', (arg)=>{
+    return moment (arg).format("DD/MM/YYYY")
+})
 
 
 

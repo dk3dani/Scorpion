@@ -16,7 +16,7 @@ class CreateSeams extends Migration
         Schema::create('seams', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('product')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->double('price', 10, 2)->nullable();
             $table->string('scale')->nullable();
             $table->boolean('paid')->nullable();

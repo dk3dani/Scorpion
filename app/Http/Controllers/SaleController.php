@@ -23,7 +23,7 @@ class SaleController extends Controller
         }
 
         return view('sales.index', [
-            'seams' => $seamsQuery->paginate(10)
+            'seams' => $seamsQuery->paginate(6)
         ]);
     }
 }

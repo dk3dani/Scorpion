@@ -115,6 +115,7 @@
 </template>
 
 <script>
+var moment = require('moment');
 export default {
   props: [
     "titulos",
@@ -131,6 +132,7 @@ export default {
   data: function() {
     return {
       buscar: "",
+       moment: moment,
       ordemAux: this.ordem || "asc",
       ordemAuxCol: this.ordemcol || 0
     };

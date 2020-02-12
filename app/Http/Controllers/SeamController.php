@@ -22,6 +22,7 @@ class SeamController extends Controller
         }
 
         $listSeams = Seam::listSeams(6);
+
         return view('seam.index', compact('listSeams', 'customers'));
     }
 
@@ -49,7 +50,6 @@ class SeamController extends Controller
         //  dd( $data);
         $data["price"] = $formattedValue;
 
-
         $validacao = \Validator::make($data, [
             'product' => 'required|string|max:255'
 
@@ -58,6 +58,7 @@ class SeamController extends Controller
         if ($validacao->fails()) {
             return redirect()->back()->withErrors($validacao)->withInput();
         }
+        // $data['paid'] = $request->input('paid') ? true : false;
         Seam::create($data);
 
         return redirect()->back()->withSuccessMessage('Costura foi criado com sucesso');;
@@ -95,6 +96,10 @@ class SeamController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+        $value = $request->price;
+        $formattedValue = str_replace(',', '.', str_replace('.', '', $value));
+        $data["price"] = $formattedValue;
+
         $validacao = \Validator::make($data, [
             'product' => 'required|string|max:255'
 
