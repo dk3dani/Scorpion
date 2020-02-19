@@ -82,26 +82,53 @@
   </modal>
   <modal nome="editar" titulo="Editar">
     <formulario id="formEditar" v-bind:action="'/customers/'+$store.state.item.id" method="put" enctype="" token="{{ csrf_token() }}">
-        <div class="form-group">
-            <label for="name">Nome</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Nome" v-model="$store.state.item.name">
+        <div class="row mb-3 ">
+            <div class="col-6">
+                <label for="name">Nome</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nome" v-model="$store.state.item.name">
+              </div>
+              <div class="col-6">
+                <label for="cpf">CPF</label>
+                <input type="text" class="cpf form-control" id="cpf" name="cpf" placeholder="ex: 000.000.000-00" v-model="$store.state.item.cpf">
+              </div>
+        </div>
+        <div class="row mb-3 ">
+            <div class="col-6">
+                <label for="phone">Celular</label>
+                <input type="text" class=" phone form-control" id="phone" name="phone" placeholder="ex: (00) 00000-0000" v-model="$store.state.item.phone">
+              </div>
+            <div class="col-6">
+                <label for="phone">Telefone</label>
+                <input type="text" class=" phone form-control" id="phone" name="phone" placeholder="ex: (00) 00000-0000" v-model="$store.state.item.tel">
+              </div>
+
+
+        </div>
+        <div class="row mb-3 ">
+            <div class="col-6">
+                <label for="street">Rua</label>
+                <input type="text" class="form-control" id="street" name="street" placeholder="ex: Rua XV de Novembro" v-model="$store.state.item.street">
+              </div>
+              <div class="col-6">
+                <label for="number">Numero</label>
+                <input type="number" class="form-control" id="number" name="number" placeholder="ex: 456" v-model="$store.state.item.number">
+              </div>
+        </div>
+        <div class="row mb-3 ">
+            <div class="col-6">
+                <label for="district">Bairro</label>
+                <input type="district" class="form-control" id="district" name="district" placeholder=" ex: Primavera" v-model="$store.state.item.district">
           </div>
-          <div class="form-group">
-            <label for="cpf">CPF</label>
-            <input type="text" class="cpf form-control" id="cpf" name="cpf" placeholder="ex: 000.000.000-00" v-model="$store.state.item.cpf">
+          <div class="col-6">
+            <label for="city">Cidade</label>
+            <input type="city" class="form-control" id="city" name="city" placeholder=" ex: Guarapuava" v-model="$store.state.item.city">
           </div>
-          <div class="form-group">
-            <label for="phone">Celular</label>
-            <input type="text" class=" phone form-control" id="phone" name="phone" placeholder="ex: (00) 00000-0000" v-model="$store.state.item.phone">
-          </div>
-          <div class="form-group">
-            <label for="street">Rua</label>
-            <input type="text" class="form-control" id="street" name="street" placeholder="ex: Rua XV de Novembro" v-model="$store.state.item.street">
-          </div>
-          <div class="form-group">
-            <label for="number">Numero</label>
-            <input type="number" class="form-control" id="number" name="number" placeholder="ex: 456" v-model="$store.state.item.number">
-          </div>
+        </div>
+
+
+
+
+
 
 
     </formulario>
