@@ -58,7 +58,7 @@ class SeamController extends Controller
         if ($validacao->fails()) {
             return redirect()->back()->withErrors($validacao)->withInput();
         }
-        // $data['paid'] = $request->input('paid') ? true : false;
+        //  $data['paid'] = $request->input('paid') ? true : false;
         Seam::create($data);
 
         return redirect()->back()->withSuccessMessage('Costura foi criado com sucesso');;
@@ -109,7 +109,7 @@ class SeamController extends Controller
             return redirect()->back()->withErrors($validacao)->withInput();
         }
 
-        $data['paid'] = $request->input('paid') ? true : false;
+        // $data['paid'] = $request->input('paid') ? true : false;
 
         Seam::find($id)->update($data);
         return redirect()->back()->withSuccessMessage('Costura atualizada com sucesso');;

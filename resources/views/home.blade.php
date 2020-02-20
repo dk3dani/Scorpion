@@ -4,9 +4,7 @@
 <page tamanho="12" >
 
 
-	<card titulo="Lista de Clientes">
-
-    </card>
+	
 
 
 
