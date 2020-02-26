@@ -16,14 +16,19 @@ class SaleController extends Controller
     {
         $paidAt = $request->input('paid_at');
 
-        $seamsQuery = Seam::query()->where('seams.paid', '=', true);
+         $seamsQuery = Seam::query();
+
+
 
         if ($paidAt) {
             $seamsQuery->where('paid_at', '=', $paidAt);
         }
 
         return view('sales.index', [
-            'seams' => $seamsQuery->paginate(6)
+            'seams' => $seamsQuery->paginate(20)
         ]);
     }
+
+
+
 }
