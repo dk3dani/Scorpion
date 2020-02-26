@@ -24,8 +24,10 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('customers', 'CustomerController');
     Route::resource('balances', 'BalanceController');
     Route::resource('seams', 'SeamController');
-    
+
     Route::get('/sales', 'SaleController@index')->name('sales');
+    Route::put('/{seam}/seam_mark_as_paid', 'SeamController@markPaid')->name('seam_mark_as_paid');
+
   });
 
 

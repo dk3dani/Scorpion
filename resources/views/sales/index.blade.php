@@ -24,7 +24,7 @@
             <input type="date" name='paid_at' class="form-control" value="{{ request()->input('paid_at') }}">
             </label>
             <button class="btn btn-primary">Buscar</button>
-        </form>
+          </form>
 
         <card cor="bg-dark" titulo="Relatório de Pagamentos">
 
@@ -60,10 +60,6 @@
 
         </div>
         <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
-          <form action="sales" method="get">
-
-
-        <card cor="bg-dark" titulo="Relatório de Pagamentos">
 
         <table class="table table-dark table-striped table-hover">
           <thead class="thead-dark ">
@@ -87,7 +83,18 @@
               <td>{{ $seam->product }}</td>
               <td >R$ {{$seam->price}}</td>
               <td >{{$seam->paid == true ? 'Pago' :'pendente' }}</td>
-              <td> <button type="button" class="btn bg-success">Pagar</button></td>
+              <td>
+                  <button
+                      onclick="payment(this)"
+                      data-url="{{ route('seam_mark_as_paid', ['seam' => $seam->id])}}"
+                      id="paid"
+                      class="btn bg-success"
+                      data-loading-text='<i class="fa fa-spinner fa-pulse"></i> Pagar'
+                  >
+                      <i class="fa fa-money"></i>
+                      Pagar
+                  </button>
+              </td>
 
               @endif
             </tr>
@@ -95,8 +102,8 @@
 
           </tbody>
         </table>
-        {{ $seams->appends(request()->all())->links() }}
-        </card>
+
+
 
         </div>
 
@@ -105,11 +112,60 @@
     <!-- /.card -->
   </div>
 </div>
+@endsection
+@section('scripts')
+
+<script>
+    function payment(btn){
+        const clickedBtn =$(btn);
+
+        Swal.fire({
+          title: 'Você Deseja realizar o pagamento agora?',
+          text: "Você não poderá reverter isso!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'sim, eu confirmo o pagamento!'
+      }).then((result) => {
+          if (result.value) {
+            $.ajax({
+              url: clickedBtn.data("url"),
+              method: 'put',
+              success: function (response) {
+                Swal.fire({
+                  title: 'Pagamento realizado',
+                  icon: 'success',
+
+                  confirmButtonColor: '#3085d6',
+
+              }).then((result) => {
+                  if (result.value) {
+                    location.reload();
+                  }
+                });
+
+              },
+              error: function () {
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'Something went wrong!',
+                      footer: '<a href>Why do I have this issue?</a>'
+                    })
+              }
+          });
+          }
 
 
 
 
+      })
 
 
+
+    }
+
+</script>
 
 @endsection

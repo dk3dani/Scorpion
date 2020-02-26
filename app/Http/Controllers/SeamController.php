@@ -117,11 +117,16 @@ class SeamController extends Controller
 
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Seam $seam
+     * @return \Illuminate\Http\JsonResponse
      */
+    public function markPaid(Seam $seam)
+    {
+        $seam->paid = true;
+        $seam->save();
+        return response()->json([]);
+
+    }
     public function destroy($id)
     {
         Seam::find($id)->forceDelete();
