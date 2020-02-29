@@ -111,7 +111,7 @@
               <a href="{{ route('sales') }}" class="nav-link">
                 <i class="nav-icon fas fa-file-invoice-dollar"></i>
                   <p>
-                       Pagamentos e Relatório
+                       Pagamentos e Históricos
                   </p>
                 </a>
               </li>

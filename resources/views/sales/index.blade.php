@@ -120,7 +120,7 @@
         const clickedBtn =$(btn);
 
         Swal.fire({
-          title: 'Você Deseja realizar o pagamento agora?',
+          title: 'Você deseja realizar o pagamento agora?',
           text: "Você não poderá reverter isso!",
           icon: 'question',
           showCancelButton: true,

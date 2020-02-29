@@ -1,39 +1,153 @@
 @extends('layouts.master')
 
 @section('content')
-<page tamanho="12" >
-    <card >
-    <div class="row mb-3">
-        <div class="col-6">
-            <canvas id="myChart" width="100vx" height="100vx"></canvas>
+
+<div><h1 class="text-center">Resumo do mês</h1></div>
+  <div class="container-fluid mb-4">
+    <div class="row justify-content-md-center">
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-info"><i class="fas fa-tshirt"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Quantidade de Pedidos</span>
+            <span class="info-box-number">{{ $data['total'] }}</span>
+          </div>
+        </div>
       </div>
-      <div class="col-6">
-        <canvas id="ChartValues" width="100px" height="100px"></canvas>
+
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-secondary"><i class="fas fa-clipboard-check"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Quantidade de pedidos pagos</span>
+            <span class="info-box-number">{{ $data['total_paid'] }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-success"><i class="fas fa-money-check-alt"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Valor total de pedidos pagos</span>
+            <span class="info-box-number"> R${{ sprintf(number_format($data['value_paid'], 2, ',','.')) }}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row justify-content-md-center">
+
+        <div class="col-md-3  col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-dark"><i class="far fa-clipboard"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Quantidade de pedidos a receber</span>
+                <span class="info-box-number"> {{ $data['total_no_paid'] }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3  col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-red"><i class="fas fa-hand-holding-usd"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text"> Valor total de pedidos a receber</span>
+                <span class="info-box-number">R${{ sprintf(number_format($data['value_no_paid'], 2, ',','.')) }}</span>
+              </div>
+            </div>
+          </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+    <div class="row mb-3">
+        <div class="col-6" style="height: 400px"  >
+            <canvas id="myChart" ></canvas>
+      </div>
+      <div class="col-6" style="height: 400px">
+        <canvas id="ChartValues"></canvas>
       </div>
     </div>
 
 
-</card>
-</page>
 
-
-    <h4>Resumo do mês</h4>
-
-    <b>Quantidade de vendas</b>: {{ $data['total'] }}
-    <br>
-    <b>Quantidade de pedidos pago</b>: {{ $data['total_paid'] }}
-    <br>
-    <b>Total de pedidos pago</b>: R${{ sprintf(number_format($data['value_paid'], 2, ',','.')) }}
-    <br>
-    <b>Quantidade de pedidos a receber</b>: {{ $data['total_no_paid'] }}
-    <br>
-    <b>Total de pedidos a receber</b>: R${{ sprintf(number_format($data['value_no_paid'], 2, ',','.')) }}
-
-    <br>
     <hr>
 
+{{--
+<table class="table table-dark table-striped table-hover">
+          <thead class="thead-dark ">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Cliente</th>
+              <th scope="col">Produto</th>
+              <th scope="col">Preço</th>
+              <th scope="col">Status</th>
+              <th scope="col">Ação</th>
 
-    <h4>Entregas do dia</h4>
+
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+
+              <th scope="row"></th>
+              <td> </td>
+              <td> </td>
+              <td></td>
+              <td>  </td>
+
+
+
+            </tr>
+
+
+          </tbody>
+        </table>
+
+
+
+    --}}
+    <div><h1 class="text-center">Entregas do dia</h1></div>
+
+    @if($deliveries->count())
+    <table class="table table-dark table-striped table-hover">
+        <thead class="thead-dark ">
+          <tr>
+            <th scope="col">Produto</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Preço</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            @foreach($deliveries as $delivery)
+          <tr>
+            <td> {{ $delivery->product }} </td>
+            <td>{{ $delivery->description ?: 'Sem descrição' }} </td>
+            <td> R${{ $delivery->price }}</td>
+          </tr>
+           @endforeach
+        </tbody>
+      </table>
+      <div><h1 class="text-right mr-5"><span class="badge badge-dark">Total: R$ {{ sprintf(number_format($data['value_day'], 2, ',','.')) }}</span> </h1></div>
+
+      @else
+          <div class="alert alert-primary">
+              Não há nenhuma entrega para hoje!
+          </div>
+      @endif
+
+    {{-- <h4>Entregas do dia</h4>
     @if($deliveries->count())
         <ul>
             @foreach($deliveries as $delivery)
@@ -49,7 +163,7 @@
         <div class="alert alert-primary">
             Não há nenhuma entrega para hoje!
         </div>
-    @endif
+    @endif --}}
 
 @endsection
 
@@ -79,6 +193,8 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
+        responsive: true,
+    maintainAspectRatio: true,
         title:{
             display:true,
             text:'Quantidade de Costuras ',
@@ -119,6 +235,8 @@ var ChartValues = new Chart(ctx, {
     },
     options: {
         legend: false,
+        responsive: true,
+    maintainAspectRatio: true,
         title:{
             display:true,
             text:'Faturamento do Mês ',
