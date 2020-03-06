@@ -1,4 +1,4 @@
-<html lang="pt-br" style="height: auto;">
+<html style="height: auto;">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,8 +22,9 @@
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
+    </ul>
       <!-- Right navbar links -->
-      <ul class="navbar-nav col-3 ml-auto">
+      <ul class="navbar-nav col-1 ml-auto">
              <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -42,6 +43,7 @@
                 </div>
             </li>
       </ul>
+
 
     </nav>
     <!-- /.navbar -->

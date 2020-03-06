@@ -61,7 +61,7 @@ class SeamController extends Controller
         //  $data['paid'] = $request->input('paid') ? true : false;
         Seam::create($data);
 
-        return redirect()->back()->withSuccessMessage('Costura foi criado com sucesso');;
+        return redirect()->back()->withSuccessMessage('Seu pedido foi criado com sucesso');;
     }
 
     /**
@@ -112,7 +112,7 @@ class SeamController extends Controller
         // $data['paid'] = $request->input('paid') ? true : false;
 
         Seam::find($id)->update($data);
-        return redirect()->back()->withSuccessMessage('Costura atualizada com sucesso');;
+        return redirect()->back()->withSuccessMessage('Seu pedido foi atualizado com sucesso');;
     }
 
 

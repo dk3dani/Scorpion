@@ -14,7 +14,7 @@
       </div>
       <div class="modal-footer">
             <slot name="addbutton"></slot>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
 
       </div>
     </div>
