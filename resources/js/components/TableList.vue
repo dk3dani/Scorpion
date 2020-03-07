@@ -140,7 +140,7 @@ export default {
   methods: {
     executaForm: function(index) {
       Swal.fire({
-        title: "Voce deseja Excluir?",
+        title: "Você deseja Excluir?",
         text: "Você não poderá reverter isso!",
         icon: "warning",
         showCancelButton: true,

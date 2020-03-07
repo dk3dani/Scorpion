@@ -137,12 +137,51 @@
     </span>
   </modal>
   <modal nome="detalhe" titulo="Detalhes">
+    <div class="card card-widget widget-user-2">
+        <!-- Add the bg color to the header using any of the bg-* classes -->
+        <div class="widget-user-header bg-dark">
+            <div class="widget-user-image">
+                <img class="img-circle elevation-2"
+                     src="https://cdn.pixabay.com/photo/2017/07/18/23/23/user-2517433_960_720.png" alt="User">
+            </div>
+            <!-- /.widget-user-image -->
+            <h3 class="widget-user-username"> Informações do Cliente</h3>
 
-  <div class="">
-        <p><span class="text-bold">Rua:</span>  @{{$store.state.item.street}}</p>
-        <p> <span class="text-bold">Numero:</span> @{{$store.state.item.number}}</p>
-        <p> <span class="text-bold">Bairro:</span> @{{$store.state.item.district}}</p>
-        <p> <span class="text-bold">Cidade:</span> @{{$store.state.item.city}}</p>
+
+            <h5 class="widget-user-desc">@{{$store.state.item.name}}</h5>
+        </div>
+        <div class="card-footer p-0">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <p class="ml-2" style="font-size: 18px">
+                        Rua: <span class="float-right mr-2 badge bg-primary" v-if="$store.state.item.street"> @{{$store.state.item.street}}</span>
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <p class="ml-2" style="font-size: 18px">
+                        Numero: <span class="float-right mr-2 badge bg-Warning"v-if="$store.state.item.number"> @{{$store.state.item.number}}</span>
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <p class="ml-2" style="font-size: 18px">
+                        Bairro: <span class="float-right mr-2 badge bg-secondary">@{{$store.state.item.district}}</span>
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <p class="ml-2" style="font-size: 18px">
+                        Cidade: <span class="float-right mr-2 badge bg-purple">@{{$store.state.item.city}}</span>
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <p class="ml-2" style="font-size: 18px">
+                       Tel: <span class="float-right mr-2 badge bg-maroon">@{{$store.state.item.tel}}</span>
+                    </p>
+                </li>
+             
+
+            </ul>
+        </div>
     </div>
+
   </modal>
 @endsection

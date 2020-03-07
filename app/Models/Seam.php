@@ -37,6 +37,11 @@ public function getPriceAttribute($price)
     return $this->attributes['price'] = sprintf(number_format($price, 2, ',','.'));
 }
 
+public function getUnformattedPriceAttribute($price)
+{
+    return $this->attributes['price'];
+}
+
     protected $casts = [
         'active' => 'boolean',
         'created_at' => 'datetime:d/m/Y',

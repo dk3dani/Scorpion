@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <card titulo="Costuras" cor="bg-dark">
+    <card titulo="Lista de Pedidos" cor="bg-dark">
         <table-list v-bind:titulos="['#','Cliente','Produto','Descrição']"
                     v-bind:itens="{{json_encode($listSeams,true)}}" ordem="desc" ordemcol="1" criar="#criar"
                     detalhe="/seams/"
