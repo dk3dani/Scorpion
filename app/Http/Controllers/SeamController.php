@@ -51,7 +51,8 @@ class SeamController extends Controller
         $data["price"] = $formattedValue;
 
         $validacao = \Validator::make($data, [
-            'product' => 'required|string|max:255'
+            'product' => 'required|string|max:255',
+            'price' => 'required'
 
         ]);
 
@@ -101,7 +102,8 @@ class SeamController extends Controller
         $data["price"] = $formattedValue;
 
         $validacao = \Validator::make($data, [
-            'product' => 'required|string|max:255'
+            'product' => 'required|string|max:255',
+            'price' => 'required'
 
         ]);
 
