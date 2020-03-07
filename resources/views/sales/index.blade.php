@@ -7,10 +7,12 @@
     <div class="card-header p-0 pt-1">
       <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="payment-tab" data-toggle="pill" href="#payment" role="tab" aria-controls="payment" aria-selected="true">Histórico de Pagamentos</a>
+          <a class="nav-link active" id="payment-tab" data-toggle="pill" href="#payment" role="tab"
+           aria-controls="payment" aria-selected="true"><i class="fas fa-money-check-alt"></i> Histórico de Pagamentos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pending-tab" data-toggle="pill" href="#pending" role="tab" aria-controls="pending" aria-selected="false">Pagamentos Pendentes</a>
+          <a class="nav-link" id="pending-tab" data-toggle="pill" href="#pending" role="tab"
+          aria-controls="pending" aria-selected="false"> <i class="fas fa-cash-register"></i> Pagamentos Pendentes</a>
         </li>
 
       </ul>

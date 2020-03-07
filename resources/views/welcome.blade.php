@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Bem vindo a Scorp</title>
+  <title>Bem vindo ao Sistema Scorp</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="img/favicon.ico" rel="icon">
+
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
@@ -34,12 +34,6 @@
   <!-- Responsive Stylesheet File -->
   <link href="css/responsive.css" rel="stylesheet">
 
-  <!-- =======================================================
-    Theme Name: eBusiness
-    Theme URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 
 <body data-spy="scroll" data-target="#navbar-example">
@@ -117,12 +111,12 @@
               <div class="slider-content">
                 <!-- layer 1 -->
                 <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
-                  <h2 class="title1">O melhor Sistema para Atêlie de Costura </h2>
+                  <h2 class="title1">O melhor Sistema para Ateliê de Costura </h2>
                 </div>
                 <!-- layer 2 -->
                 <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
                   <h1 class="title2">
-                    Este sistema irá ajudá-lo a gerenciar  melhor seu Atêlie de Costura.</h1>
+                    Este sistema irá ajudá-lo a gerenciar  melhor seu Ateliê de Costura.</h1>
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
@@ -143,7 +137,7 @@
               <div class="slider-content text-center">
                 <!-- layer 1 -->
                 <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <h2 class="title1">O melhor Sistema para Atêlie de Costura </h2>
+                  <h2 class="title1">O melhor Sistema para Ateliê de Costura </h2>
                 </div>
                 <!-- layer 2 -->
                 <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
@@ -217,7 +211,7 @@
                 <h4 class="sec-head">Sistema de Gereciamento de Ateliê</h4>
               </a>
               <p>
-               Scorp é um sistema que vai gerenciar seus pedidos, costureiras a gerenciar seu negocio.
+               Scorp é um sistema de gerenciamento de ateliê criado para ser eficiente e simples para resolver problemas especificos durante os pedidos de confecção.
               </p>
               <ul>
                 <li>
@@ -263,11 +257,11 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-											<i class="fa fa-code"></i>
+											<i class="fa fa-user"></i>
 										</a>
-                  <h4>text</h4>
+                  <h4>Controle de Clientes</h4>
                   <p>
-                   text
+                  Com o controle de clientes voce terá informações importantes para atender da melhor forma seus clientes.
                   </p>
                 </div>
               </div>
@@ -279,11 +273,11 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-											<i class="fa fa-camera-retro"></i>
+											<i class="fa fa-usd"></i>
 										</a>
-                  <h4>text</h4>
+                  <h4>Controle de pagamentos</h4>
                   <p>
-                    text
+                   No controle de pagamentos você vai ter informações de quantos pedidos ja foram pagos  ou  ainda estão pendentes.
                   </p>
                 </div>
               </div>
@@ -296,64 +290,11 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-											<i class="fa fa-wordpress"></i>
+                    <i class="fa fa-tags"></i>
 										</a>
-                  <h4>text</h4>
+                  <h4>Gerenciamento de Pedidos</h4>
                   <p>
-                    text
-                  </p>
-                </div>
-              </div>
-              <!-- end about-details -->
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!-- end col-md-4 -->
-            <div class=" about-move">
-              <div class="services-details">
-                <div class="single-services">
-                  <a class="services-icon" href="#">
-											<i class="fa fa-camera-retro"></i>
-										</a>
-                  <h4>text </h4>
-                  <p>
-                    text
-                  </p>
-                </div>
-              </div>
-              <!-- end about-details -->
-            </div>
-          </div>
-          <!-- End Left services -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!-- end col-md-4 -->
-            <div class=" about-move">
-              <div class="services-details">
-                <div class="single-services">
-                  <a class="services-icon" href="#">
-											<i class="fa fa-bar-chart"></i>
-										</a>
-                  <h4>text</h4>
-                  <p>
-                    text
-                  </p>
-                </div>
-              </div>
-              <!-- end about-details -->
-            </div>
-          </div>
-          <!-- End Left services -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!-- end col-md-4 -->
-            <div class=" about-move">
-              <div class="services-details">
-                <div class="single-services">
-                  <a class="services-icon" href="#">
-											<i class="fa fa-ticket"></i>
-										</a>
-                  <h4>text</h4>
-                  <p>
-                    text
+                    No sistema você tem como controlar seus pedidos de forma simples.
                   </p>
                 </div>
               </div>
