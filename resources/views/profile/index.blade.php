@@ -1,23 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-
-
-    {{-- <form action="{{route('user.update')}}" method="POST">
-        {!! csrf_field () !!}
-<div class="form-group">
-<label for="name"> nome</label>
-<input type="text" name="name"  value="{{auth()->user()->name}}" placeholder="nome" class="form-control">
-</div>
-<div class="form-group">
-<label for="email"> Email</label>
-<input type="email" name="email"value="{{auth()->user()->email}}"placeholder="email" class="form-control">
-</div>
-<button type="submit" class="btn btn-success">Submit</button>
-    </form>
-
-</card> --}}
 <section class="content">
     <div class="container-fluid">
       <div class="row">
@@ -57,7 +40,7 @@
           <div class="card">
             <div class="card-header  bg-purple  p-2">
               <ul class="nav nav-pills">
-                <li class="nav-item"><h1> <span class="badge bg-purple">Editar Perfil</span></h1></li>
+                <li class="nav-item"><h1> <span class="badge bg-purple"><i class="fas fa-user-edit"></i> Editar Perfil</span></h1></li>
               </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
