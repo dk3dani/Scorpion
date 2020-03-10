@@ -28,6 +28,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/sales', 'SaleController@index')->name('sales');
     Route::put('/{seam}/seam_mark_as_paid', 'SeamController@markPaid')->name('seam_mark_as_paid');
 
-  });
 
+  });
+  Route::get('/profile', 'UserController@index')->name('profile')->middleware('auth');
+  Route::post('/update', 'UserController@update')->name('user.update')->middleware('auth');
 
