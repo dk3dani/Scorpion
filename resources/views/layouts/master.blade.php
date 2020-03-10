@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Scorpion</title>
+    <title>Scorp</title>
 <link rel="stylesheet" href="/css/app.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
@@ -68,7 +68,7 @@
             <img src="https://image.freepik.com/vetores-gratis/avatars-user-pack_23-2147502629.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block"> {{ Auth::user()->name }}</a>
+            <a href="{{ route('profile') }}" class="d-block"> {{ Auth::user()->name }}</a>
           </div>
         </div>
 
