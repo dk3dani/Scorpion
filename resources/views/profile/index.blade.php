@@ -2,7 +2,7 @@
 
 @section('content')
 
- <card titulo="Editar perfil">
+
 
     {{-- <form action="{{route('user.update')}}" method="POST">
         {!! csrf_field () !!}
@@ -27,7 +27,7 @@
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
-                <img class="profile-user-img img-fluid img-circle" src="https://cdn.pixabay.com/photo/2017/07/18/23/23/user-2517433_960_720.png" alt="User profile picture">
+                <img class="profile-user-img img-fluid  img-circle"  src="{{ url('storage/users/'.auth()->user()->image)}}" alt="User profile picture">
               </div>
 
               <h3 class="profile-username text-center">{{auth()->user()->name}}</h3>
@@ -55,16 +55,16 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="card">
-            <div class="card-header p-2">
+            <div class="card-header  bg-purple  p-2">
               <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link active bg-secondary" href="#settings" data-toggle="tab">Editar Perfil</a></li>
+                <li class="nav-item"><h1> <span class="badge bg-purple">Editar Perfil</span></h1></li>
               </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
               <div class="tab-content">
 
                 <div class="tab-pane active" id="settings">
-                <form class="form-horizontal" action="{{route('user.update')}}" method="POST">
+                <form class="form-horizontal" action="{{route('user.update')}}" method="POST" enctype="multipart/form-data">
                     {!! csrf_field () !!}
                     <div class="form-group row">
                       <label for="name" class="col-sm-2 col-form-label">Name</label>
@@ -84,12 +84,16 @@
                         <input type="password" name="password" class="form-control" id="password" placeholder="Nova senha">
                       </div>
                     </div>
-
-
+                    <div class="form-group row">
+                      <label for="image"   class="col-sm-2 col-form-label">Imagem de Perfil</label>
+                      <div class="col-sm-10">
+                        <input type="file" name="image" class="form-control" id="image" >
+                      </div>
+                    </div>
 
                     <div class="form-group row">
                       <div class="offset-sm-2 col-sm-10">
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success">Atualizar</button>
                       </div>
                     </div>
                   </form>
@@ -106,7 +110,6 @@
       <!-- /.row -->
     </div><!-- /.container-fluid -->
   </section>
-
 
 
 @endsection

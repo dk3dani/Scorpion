@@ -65,7 +65,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="https://image.freepik.com/vetores-gratis/avatars-user-pack_23-2147502629.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="{{ url('storage/users/'.auth()->user()->image)}}"width="20%"height="20%"  class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="{{ route('profile') }}" class="d-block"> {{ Auth::user()->name }}</a>
