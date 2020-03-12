@@ -19,4 +19,4 @@ Após isso, terá uma pasta chamada `scorpion` no diretório atual. Adentre a me
 - Novamente no diretório na pasta raiz do projeto, execute `php artisan migrate`.
 - npm i.
  
-Após isso, o projeto já estará em condições de ser executado: `npm run dev & php artisan serve.´
+Após isso, o projeto já estará em condições de ser executado: `npm run dev & php artisan serve.` 
